@@ -9,15 +9,82 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+/*
+  ════════════════════════════════════════════════════════════════
+  BLOG POST TEMPLATE — HOW TO USE THIS FILE
+  ════════════════════════════════════════════════════════════════
+  
+  1. COPY this file and rename it to match your blog slug.
+     Example: "trekking-langtang-silence.html"
+     The slug must match what you put in blogs/index.json
+     
+  2. UPDATE the <title> tag at the very top of this file.
+  
+  3. UPDATE the hero section:
+     - .post-cat      → category (Travel / Advocacy / Art / Research)
+     - h1.post-title  → your post title
+     - .post-date     → date in "Month DD, YYYY" format
+     - .post-hero     → add background-image for your cover photo (see comment)
+     
+  4. WRITE your content inside <div class="post-body">.
+     Available content blocks:
+     
+     PARAGRAPH:
+       <p>Your text here.</p>
+     
+     SECTION HEADING:
+       <h2>Section Title</h2>
+     
+     PULL QUOTE / HIGHLIGHT SENTENCE:
+       <blockquote>A memorable line that stands out visually.</blockquote>
+     
+     SINGLE INLINE IMAGE (centered, full-width with caption):
+       <figure class="post-image">
+         <img src="../blogs/images/your-image.jpg" alt="Brief description">
+         <figcaption>Caption text shown under the image</figcaption>
+       </figure>
+     
+     TWO IMAGES SIDE BY SIDE:
+       <div class="post-image-pair">
+         <figure class="post-image">
+           <img src="../blogs/images/img1.jpg" alt="Description">
+           <figcaption>Caption for left image</figcaption>
+         </figure>
+         <figure class="post-image">
+           <img src="../blogs/images/img2.jpg" alt="Description">
+           <figcaption>Caption for right image</figcaption>
+         </figure>
+       </div>
+  
+  5. WHERE TO UPLOAD YOUR IMAGES:
+     Cover image  →  blogs/covers/your-cover.jpg
+     Body images  →  blogs/images/your-image.jpg
+     Reference in HTML as: ../blogs/images/filename.jpg
+     You can upload these directly through GitHub's "Add file" button.
+  
+  6. ADD THIS POST TO THE BLOG INDEX:
+     Open blogs/index.json and add a new entry at the top of the array:
+     {
+       "slug": "your-post-slug",
+       "title": "Your Post Title",
+       "date": "2025-12-01",
+       "category": "Travel",
+       "excerpt": "Short 1-2 sentence preview shown on the homepage.",
+       "cover": "blogs/covers/your-cover.jpg"
+     }
+  
+  ════════════════════════════════════════════════════════════════
+*/
 :root {
   --bg: #faf6f1; --bg-dark: #1c1a17;
-  --accent: #c45c2e; --gold: #c9a84c;
+  --accent: #c45c2e; --gold: #c9a84c; --accent-2: #4a7c59;
   --text: #2e2a25; --text-light: #7a7269; --text-muted: #a09890;
   --border: rgba(46,42,37,0.12);
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); background: var(--bg); color: var(--text); }
 
 nav {
@@ -32,31 +99,65 @@ nav {
 .nav-back:hover { color: var(--accent); }
 
 .post-hero {
-  height: 400px;
+  height: clamp(280px, 45vw, 480px);
   background: linear-gradient(135deg, #4a7c59, #2e5440);
+  /*
+    TO ADD YOUR COVER PHOTO:
+    Add this inline style to the .post-hero div below:
+    style="background-image:url('../blogs/covers/your-cover.jpg');background-size:cover;background-position:center;"
+    Upload image to blogs/covers/ first.
+  */
   display: flex; align-items: flex-end;
   padding: 3rem 8vw;
   position: relative; overflow: hidden;
 }
-/* Replace background with: background-image: url('../blogs/covers/your-image.jpg'); background-size: cover; background-position: center; */
-.post-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,26,23,0.7), transparent); }
+.post-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(28,26,23,0.78) 0%, rgba(0,0,0,0.08) 60%, transparent 100%);
+}
 .post-hero-content { position: relative; z-index: 1; }
 .post-cat { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
-.post-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: white; line-height: 1.15; max-width: 640px; }
+.post-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; color: white; line-height: 1.15; max-width: 680px; }
 .post-date { margin-top: 0.75rem; font-size: 0.8rem; color: rgba(255,255,255,0.55); }
 
-.post-body {
-  max-width: 720px; margin: 0 auto;
-  padding: 4rem 5vw;
-}
-.post-body p { font-size: 1.05rem; line-height: 1.85; color: var(--text-light); margin-bottom: 1.5rem; }
-.post-body h2 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; color: var(--text); margin: 2.5rem 0 1rem; }
+.post-body { max-width: 720px; margin: 0 auto; padding: 4rem 5vw 3rem; }
+.post-body p { font-size: 1.05rem; line-height: 1.9; color: var(--text-light); margin-bottom: 1.6rem; }
+.post-body h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; color: var(--text); margin: 2.75rem 0 1rem; line-height: 1.25; }
 .post-body blockquote {
   padding: 1.25rem 0 1.25rem 1.75rem;
   border-left: 3px solid var(--accent);
   font-family: var(--font-display); font-style: italic;
-  font-size: 1.2rem; color: var(--text); margin: 2rem 0;
+  font-size: 1.25rem; line-height: 1.55; color: var(--text);
+  margin: 2.25rem 0;
 }
+
+/* ─── SINGLE INLINE IMAGE with caption ─── */
+.post-image {
+  margin: 2.75rem -2rem; /* bleeds slightly past text column */
+}
+@media (max-width: 600px) { .post-image { margin: 2rem -1rem; } }
+.post-image img {
+  width: 100%; display: block; object-fit: cover; max-height: 520px;
+}
+.post-image figcaption {
+  display: block;
+  padding: 0.65rem 1rem;
+  font-size: 0.78rem; letter-spacing: 0.03em; line-height: 1.5;
+  color: #f5f0ea; background: var(--text);
+}
+.post-image figcaption::before { content: '↑ '; color: var(--gold); }
+
+/* ─── TWO IMAGES SIDE BY SIDE ─── */
+.post-image-pair {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+  margin: 2.75rem -2rem;
+}
+.post-image-pair .post-image { margin: 0; }
+.post-image-pair .post-image img { max-height: 340px; }
+@media (max-width: 600px) {
+  .post-image-pair { grid-template-columns: 1fr; margin: 2rem -1rem; }
+}
+
 .post-nav {
   max-width: 720px; margin: 0 auto;
   padding: 2rem 5vw 4rem;
@@ -66,16 +167,33 @@ nav {
 .post-nav a { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-light); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
 .post-nav a:hover { color: var(--accent); }
 footer { text-align: center; padding: 2rem; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid var(--border); }
+
+/* Placeholder blocks shown before real images are uploaded */
+.img-placeholder {
+  height: 320px; width: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; letter-spacing: 0.06em; text-align: center;
+  padding: 1.5rem; color: rgba(255,255,255,0.4);
+}
+.img-placeholder.pair { height: 260px; }
 </style>
 </head>
 <body>
+
 <nav>
   <a href="../index.html" class="nav-logo">Manisha Thapa</a>
   <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> All Posts</a>
 </nav>
 
+<!--
+  STEP 1: Add cover image to this div using inline style.
+  Example:
+    <div class="post-hero" style="background-image:url('../blogs/covers/langtang.jpg');background-size:cover;background-position:center;">
+  Upload image to: blogs/covers/
+-->
 <div class="post-hero">
   <div class="post-hero-content">
+    <!-- STEP 2: Update category, title, and date below -->
     <div class="post-cat">Travel</div>
     <h1 class="post-title">Finding Silence in Langtang</h1>
     <div class="post-date">November 8, 2025</div>
@@ -83,25 +201,82 @@ footer { text-align: center; padding: 2rem; font-size: 0.75rem; color: var(--tex
 </div>
 
 <div class="post-body">
+
+  <!-- STEP 3: Write your post content here. -->
+
   <p>
     The trail starts at Syabrubesi and doesn't let up. By the second day your legs know the rhythm of altitude gain — steep, then steeper, then somehow steeper again — and your lungs have started their quiet negotiation with the air.
   </p>
+
   <p>
     I went alone. People ask about this as though it's the interesting part, as though the aloneness is the story rather than the thing that made the story possible. I've learned to stop explaining. The mountains don't need you to justify your presence.
   </p>
+
+  <!-- PULL QUOTE: a highlight sentence shown visually as a callout -->
   <blockquote>
     Three days above 4,000m with no phone signal and everything to think about.
   </blockquote>
+
+  <!--
+    SINGLE INLINE IMAGE
+    ─────────────────────────────────────
+    HOW TO ADD:
+      1. Upload image to: blogs/images/
+      2. Uncomment the <img> line below
+      3. Replace "langtang-trail.jpg" with your filename
+      4. Update alt="" and figcaption text
+      5. Delete or comment out the .img-placeholder div
+    ─────────────────────────────────────
+  -->
+  <figure class="post-image">
+    <!-- <img src="../blogs/images/langtang-trail.jpg" alt="The trail through Langtang Valley at dawn"> -->
+    <div class="img-placeholder" style="background:linear-gradient(135deg,#4a7c59,#2e5440);">
+      Upload image to blogs/images/ → uncomment the &lt;img&gt; line above
+    </div>
+    <figcaption>The trail through Langtang Valley at dawn — about 2 hours past Lama Hotel</figcaption>
+  </figure>
+
   <h2>What Silence Actually Sounds Like</h2>
+
   <p>
     Silence at altitude is not the absence of sound. It's the wind moving through dried grass. A stone loosened by a boot somewhere above. Your own breathing, which becomes very loud when there's nothing to compete with it. In Kyanjin Gompa, the prayer flags made a low, continuous sound I can only describe as the mountains speaking to themselves.
   </p>
+
   <p>
     I thought about my work. About the women and girls whose access to basic health services still depends on where they were born, which province, which caste. About how far we are from the rights that should be universal. Up there, the gap felt both enormous and possible to close — altitude does something strange to your sense of scale.
   </p>
+
+  <!--
+    TWO SIDE-BY-SIDE IMAGES
+    ─────────────────────────────────────
+    HOW TO ADD:
+      1. Upload both images to: blogs/images/
+      2. Uncomment both <img> lines
+      3. Replace filenames, alt text, and captions
+      4. Delete the .img-placeholder divs once real images are added
+    ─────────────────────────────────────
+  -->
+  <div class="post-image-pair">
+    <figure class="post-image">
+      <!-- <img src="../blogs/images/kyanjin-gompa.jpg" alt="Kyanjin Gompa monastery"> -->
+      <div class="img-placeholder pair" style="background:linear-gradient(135deg,#c9a84c,#8a6e28);">
+        Image 1 → upload to blogs/images/
+      </div>
+      <figcaption>Kyanjin Gompa at dusk, 3,870m</figcaption>
+    </figure>
+    <figure class="post-image">
+      <!-- <img src="../blogs/images/langtang-sunrise.jpg" alt="Sunrise over the Langtang range"> -->
+      <div class="img-placeholder pair" style="background:linear-gradient(135deg,#c45c2e,#8a3d1e);">
+        Image 2 → upload to blogs/images/
+      </div>
+      <figcaption>First light over the Langtang range</figcaption>
+    </figure>
+  </div>
+
   <p>
-    I came down different. Not transformed in the way travel magazines promise you'll be transformed. Just — recalibrated. Clearer about which problems are worth the energy and which are noise.
+    I came down different. Not transformed in the way travel magazines promise you'll be transformed. Just — recalibrated. Clearer about which problems are worth the energy and which are noise. The mountains don't give you answers; they give you the quiet to hear the ones you already had.
   </p>
+
 </div>
 
 <div class="post-nav">
