@@ -1,2 +1,2 @@
 # portfolio
-This is my first repository. It has my portfolio. 
+This is my first repository, made for my portfolio. 
