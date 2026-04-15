@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finding Silence in Langtang — Manisha Thapa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --bg: #faf6f1; --bg-dark: #1c1a17;
+  --accent: #c45c2e; --gold: #c9a84c;
+  --text: #2e2a25; --text-light: #7a7269; --text-muted: #a09890;
+  --border: rgba(46,42,37,0.12);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 64px;
+  background: rgba(250,246,241,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--text); text-decoration: none; }
+.nav-back { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+.nav-back:hover { color: var(--accent); }
+
+.post-hero {
+  height: 400px;
+  background: linear-gradient(135deg, #4a7c59, #2e5440);
+  display: flex; align-items: flex-end;
+  padding: 3rem 8vw;
+  position: relative; overflow: hidden;
+}
+/* Replace background with: background-image: url('../blogs/covers/your-image.jpg'); background-size: cover; background-position: center; */
+.post-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,26,23,0.7), transparent); }
+.post-hero-content { position: relative; z-index: 1; }
+.post-cat { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+.post-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: white; line-height: 1.15; max-width: 640px; }
+.post-date { margin-top: 0.75rem; font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+
+.post-body {
+  max-width: 720px; margin: 0 auto;
+  padding: 4rem 5vw;
+}
+.post-body p { font-size: 1.05rem; line-height: 1.85; color: var(--text-light); margin-bottom: 1.5rem; }
+.post-body h2 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; color: var(--text); margin: 2.5rem 0 1rem; }
+.post-body blockquote {
+  padding: 1.25rem 0 1.25rem 1.75rem;
+  border-left: 3px solid var(--accent);
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1.2rem; color: var(--text); margin: 2rem 0;
+}
+.post-nav {
+  max-width: 720px; margin: 0 auto;
+  padding: 2rem 5vw 4rem;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid var(--border);
+}
+.post-nav a { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-light); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+.post-nav a:hover { color: var(--accent); }
+footer { text-align: center; padding: 2rem; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">Manisha Thapa</a>
+  <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> All Posts</a>
+</nav>
+
+<div class="post-hero">
+  <div class="post-hero-content">
+    <div class="post-cat">Travel</div>
+    <h1 class="post-title">Finding Silence in Langtang</h1>
+    <div class="post-date">November 8, 2025</div>
+  </div>
+</div>
+
+<div class="post-body">
+  <p>
+    The trail starts at Syabrubesi and doesn't let up. By the second day your legs know the rhythm of altitude gain — steep, then steeper, then somehow steeper again — and your lungs have started their quiet negotiation with the air.
+  </p>
+  <p>
+    I went alone. People ask about this as though it's the interesting part, as though the aloneness is the story rather than the thing that made the story possible. I've learned to stop explaining. The mountains don't need you to justify your presence.
+  </p>
+  <blockquote>
+    Three days above 4,000m with no phone signal and everything to think about.
+  </blockquote>
+  <h2>What Silence Actually Sounds Like</h2>
+  <p>
+    Silence at altitude is not the absence of sound. It's the wind moving through dried grass. A stone loosened by a boot somewhere above. Your own breathing, which becomes very loud when there's nothing to compete with it. In Kyanjin Gompa, the prayer flags made a low, continuous sound I can only describe as the mountains speaking to themselves.
+  </p>
+  <p>
+    I thought about my work. About the women and girls whose access to basic health services still depends on where they were born, which province, which caste. About how far we are from the rights that should be universal. Up there, the gap felt both enormous and possible to close — altitude does something strange to your sense of scale.
+  </p>
+  <p>
+    I came down different. Not transformed in the way travel magazines promise you'll be transformed. Just — recalibrated. Clearer about which problems are worth the energy and which are noise.
+  </p>
+</div>
+
+<div class="post-nav">
+  <a href="index.html"><i class="fas fa-arrow-left"></i> All Posts</a>
+  <a href="../index.html">Back to Portfolio <i class="fas fa-arrow-right"></i></a>
+</div>
+
+<footer>&copy; <span id="yr"></span> Manisha Thapa</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
