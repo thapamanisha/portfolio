@@ -1,0 +1,8 @@
+{
+  "slug": "your-post-slug",
+  "title": "Your Post Title",
+  "date": "2025-12-01",
+  "category": "Travel",
+  "excerpt": "A short 1-2 sentence preview shown on the homepage.",
+  "cover": "blogs/covers/your-image.jpg"
+}
