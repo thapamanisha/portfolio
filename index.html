@@ -527,12 +527,36 @@ section { position: relative; }
   padding: 0 8vw;
   margin-bottom: 3rem;
 }
-.awards-scroll-container {
-  overflow-x: auto;
-  padding: 1rem 8vw 2rem;
-  scrollbar-width: none;
+/* Auto-scrolling marquee ticker */
+.awards-marquee-wrap {
+  overflow: hidden;
+  padding: 1rem 0 2rem;
+  position: relative;
 }
-.awards-scroll-container::-webkit-scrollbar { display: none; }
+/* Fade edges on desktop */
+.awards-marquee-wrap::before,
+.awards-marquee-wrap::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+  pointer-events: none;
+}
+.awards-marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+.awards-marquee-wrap::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+.awards-track {
+  display: flex; gap: 1.5rem;
+  width: max-content;
+  animation: awards-scroll 32s linear infinite;
+}
+.awards-track:hover { animation-play-state: paused; }
+@keyframes awards-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (max-width: 600px) {
+  .awards-marquee-wrap::before,
+  .awards-marquee-wrap::after { width: 40px; }
+  .awards-track { animation-duration: 22s; }
+}
 .awards-row {
   display: flex; gap: 1.5rem;
   width: max-content;
@@ -631,12 +655,26 @@ section { position: relative; }
   background: var(--bg-dark);
 }
 .media-intro { color: rgba(245,240,234,0.45); margin-bottom: 3.5rem; }
+
+/*
+  Smart responsive grid:
+  1 video  → 1 col
+  2 videos → 2 col
+  3 videos → 3 col  (one row)
+  4 videos → 2×2
+  5 videos → 3 top + 2 bottom (auto-fit handles this)
+  6 videos → 3×2
+  We set max columns via CSS custom property updated by JS.
+*/
 .videos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(var(--video-cols, 3), 1fr);
   gap: 1.75rem;
-  max-width: 1200px; margin: 0 auto 4rem;
+  max-width: 1200px; margin: 0 auto 5rem;
 }
+@media (max-width: 900px) { .videos-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .videos-grid { grid-template-columns: 1fr; } }
+
 .video-card {
   position: relative; overflow: hidden;
   border: 1px solid rgba(255,255,255,0.06);
@@ -649,6 +687,8 @@ section { position: relative; }
 .video-wrapper {
   position: relative; padding-bottom: 56.25%; overflow: hidden;
 }
+/* Portrait/9:16 variant for Instagram reels */
+.video-wrapper.portrait { padding-bottom: 177.78%; }
 .video-wrapper iframe {
   position: absolute; inset: 0;
   width: 100%; height: 100%; border: 0;
@@ -664,24 +704,43 @@ section { position: relative; }
 }
 .video-desc { font-size: 0.8rem; color: rgba(245,240,234,0.45); line-height: 1.5; }
 
-.media-mentions {
-  padding-top: 3rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 2rem;
+/* ─── AS SEEN IN — prominent bar ─── */
+.media-mentions-section {
+  max-width: 1200px; margin: 0 auto;
+  padding: 3rem 2rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
 }
-.media-mentions-label {
-  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: rgba(245,240,234,0.3); margin-right: 0.5rem;
+.media-mentions-heading {
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); text-align: center;
+  margin-bottom: 1.75rem;
+  display: flex; align-items: center; gap: 1rem; justify-content: center;
 }
-.media-mention-link {
-  font-family: var(--font-display);
-  font-size: 1rem; font-weight: 600;
-  color: rgba(245,240,234,0.4);
+.media-mentions-heading::before,
+.media-mentions-heading::after {
+  content: ''; flex: 1; max-width: 80px; height: 1px; background: rgba(255,255,255,0.1);
+}
+.media-mentions-row {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; align-items: center;
+  gap: 0.5rem 1rem;
+}
+.media-mention-pill {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(245,240,234,0.65);
   text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: color 0.2s;
+  font-size: 0.82rem; letter-spacing: 0.04em;
+  transition: all 0.22s;
 }
-.media-mention-link:hover { color: var(--gold); }
+.media-mention-pill i { font-size: 0.75rem; color: var(--gold); }
+.media-mention-pill:hover {
+  border-color: var(--gold);
+  color: #f5f0ea;
+  background: rgba(201,168,76,0.07);
+}
 
 /* ─── TRAVEL ─── */
 #travel {
@@ -1323,54 +1382,114 @@ footer {
 </section>
 
 <!-- ═══ AWARDS ═══ -->
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  HOW TO ADD A NEW AWARD                                      ║
+  ║  Copy one <div class="award-card"> block below and paste     ║
+  ║  it into BOTH the first and second .awards-row divs          ║
+  ║  (the row is duplicated so the loop animation works).        ║
+  ║  Change the icon, title, org, year, and link as needed.      ║
+  ║  Icon options (Font Awesome): fa-trophy, fa-star,            ║
+  ║  fa-graduation-cap, fa-palette, fa-users, fa-globe,          ║
+  ║  fa-newspaper, fa-award, fa-medal, fa-certificate            ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
 <section id="awards">
   <div class="awards-header reveal">
     <div class="section-label">Recognition</div>
     <h2 class="section-title">Awards &amp; Honours</h2>
   </div>
-  <div class="awards-scroll-container">
-    <div class="awards-row">
-      <div class="award-card reveal delay-1">
-        <div class="award-icon"><i class="fas fa-trophy"></i></div>
-        <div class="award-title">ICFP Youth Trailblazer Award</div>
-        <div class="award-org"><a href="https://theicfp.org/2025-youth-trailblazers" target="_blank" style="color:inherit;text-decoration:none;">International Conference on Family Planning</a></div>
-        <div class="award-year">2025</div>
+  <div class="awards-marquee-wrap">
+    <div class="awards-track">
+      <!-- ── FIRST COPY (real cards) ── -->
+      <div class="awards-row">
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-trophy"></i></div>
+          <div class="award-title">ICFP Youth Trailblazer Award</div>
+          <div class="award-org"><a href="https://theicfp.org/2025-youth-trailblazers" target="_blank" style="color:inherit;text-decoration:none;">International Conference on Family Planning</a></div>
+          <div class="award-year">2025</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div class="award-title">Bayer Scholar Award</div>
+          <div class="award-org"><a href="https://www.facebook.com/manisha.thapa.708819/posts/1479212163439266/" target="_blank" style="color:inherit;text-decoration:none;">Johns Hopkins University — Summer Institute</a></div>
+          <div class="award-year">2025</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-palette"></i></div>
+          <div class="award-title">Abortion Artist Fellow</div>
+          <div class="award-org"><a href="https://www.makeinroads.org/get-involved/fellowships/past/Manisha" target="_blank" style="color:inherit;text-decoration:none;">Make In Roads — Artists Busting Abortion Stigma</a></div>
+          <div class="award-year">2021–2022</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-users"></i></div>
+          <div class="award-title">WOSSO Fellow</div>
+          <div class="award-org"><a href="https://wosso.org/manisha-thapa/" target="_blank" style="color:inherit;text-decoration:none;">Women of the South Speak Out, ARROW/GenderLinks</a></div>
+          <div class="award-year">2024–2026</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-star"></i></div>
+          <div class="award-title">Dean's List Certification</div>
+          <div class="award-org">Faculty of Health Sciences, Pokhara University</div>
+          <div class="award-year">2022</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <div class="award-title">Solo Traveler Award — Top 5 Female</div>
+          <div class="award-org">Solo Female Travel Recognition</div>
+          <div class="award-year">2024</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-globe"></i></div>
+          <div class="award-title">US Embassy Youth Council Member</div>
+          <div class="award-org"><a href="https://www.instagram.com/p/C3sGfJ7ybdI/" target="_blank" style="color:inherit;text-decoration:none;">United States Embassy Youth Council Nepal (USYC)</a></div>
+          <div class="award-year">2023</div>
+        </div>
       </div>
-      <div class="award-card reveal delay-2">
-        <div class="award-icon"><i class="fas fa-graduation-cap"></i></div>
-        <div class="award-title">IAS Conference Scholar</div>
-        <div class="award-org">International AIDS Society Conference, Rwanda</div>
-        <div class="award-year">2025</div>
-      </div>
-      <div class="award-card reveal delay-3">
-        <div class="award-icon"><i class="fas fa-palette"></i></div>
-        <div class="award-title">Abortion Artist Fellow</div>
-        <div class="award-org"><a href="https://www.makeinroads.org/get-involved/fellowships/past/Manisha" target="_blank" style="color:inherit;text-decoration:none;">Make In Roads — Artists Busting Abortion Stigma</a></div>
-        <div class="award-year">2021–2022</div>
-      </div>
-      <div class="award-card reveal delay-4">
-        <div class="award-icon"><i class="fas fa-users"></i></div>
-        <div class="award-title">WOSSO Fellow</div>
-        <div class="award-org">Women of the South Speak Out, ARROW/GenderLinks</div>
-        <div class="award-year">2024–2026</div>
-      </div>
-      <div class="award-card reveal delay-1">
-        <div class="award-icon"><i class="fas fa-star"></i></div>
-        <div class="award-title">Dean's List Certification</div>
-        <div class="award-org">Faculty of Health Sciences, Pokhara University</div>
-        <div class="award-year">2022</div>
-      </div>
-      <div class="award-card reveal delay-2">
-        <div class="award-icon"><i class="fas fa-newspaper"></i></div>
-        <div class="award-title">Featured Profile</div>
-        <div class="award-org"><a href="https://kathmandupost.com/art-culture/2024/11/20/what-i-watch-online-manisha-thapa" target="_blank" style="color:inherit;text-decoration:none;">The Kathmandu Post</a></div>
-        <div class="award-year">2024</div>
-      </div>
-      <div class="award-card reveal delay-3">
-        <div class="award-icon"><i class="fas fa-globe"></i></div>
-        <div class="award-title">US Embassy Youth Council</div>
-        <div class="award-org">United States Embassy Youth Council Nepal (USYC)</div>
-        <div class="award-year">2023</div>
+      <!-- ── SECOND COPY (duplicate for seamless loop) ── -->
+      <div class="awards-row" aria-hidden="true">
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-trophy"></i></div>
+          <div class="award-title">ICFP Youth Trailblazer Award</div>
+          <div class="award-org">International Conference on Family Planning</div>
+          <div class="award-year">2025</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div class="award-title">Bayer Scholar Award</div>
+          <div class="award-org">Johns Hopkins University — Summer Institute</div>
+          <div class="award-year">2025</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-palette"></i></div>
+          <div class="award-title">Abortion Artist Fellow</div>
+          <div class="award-org">Make In Roads — Artists Busting Abortion Stigma</div>
+          <div class="award-year">2021–2022</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-users"></i></div>
+          <div class="award-title">WOSSO Fellow</div>
+          <div class="award-org">Women of the South Speak Out, ARROW/GenderLinks</div>
+          <div class="award-year">2024–2026</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-star"></i></div>
+          <div class="award-title">Dean's List Certification</div>
+          <div class="award-org">Faculty of Health Sciences, Pokhara University</div>
+          <div class="award-year">2022</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <div class="award-title">Solo Traveler Award — Top 5 Female</div>
+          <div class="award-org">Solo Female Travel Recognition</div>
+          <div class="award-year">2024</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-globe"></i></div>
+          <div class="award-title">US Embassy Youth Council Member</div>
+          <div class="award-org">United States Embassy Youth Council Nepal (USYC)</div>
+          <div class="award-year">2023</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1432,6 +1551,30 @@ footer {
 </section>
 
 <!-- ═══ MEDIA / TALKS ═══ -->
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  HOW TO ADD A NEW VIDEO                                      ║
+  ║  1. Copy a <div class="video-card"> block below              ║
+  ║  2. Replace the YouTube embed URL:                           ║
+  ║     https://www.youtube.com/embed/VIDEO_ID_HERE              ║
+  ║     (get VIDEO_ID from youtube.com/watch?v=VIDEO_ID)         ║
+  ║  3. Update the title and description text                    ║
+  ║  4. The grid auto-adjusts:                                   ║
+  ║     3 videos → 3 cols, 4 → 2×2, 5 → 3+2, 6 → 3×2           ║
+  ║     The JS below counts videos and sets --video-cols         ║
+  ║                                                              ║
+  ║  FOR INSTAGRAM REELS: Use class="video-wrapper portrait"     ║
+  ║  for a 9:16 tall video embed (looks better for vertical       ║
+  ║  content). Normal YouTube uses class="video-wrapper"         ║
+  ╚══════════════════════════════════════════════════════════════╝
+  
+  HOW TO UPDATE "AS SEEN IN":
+  Add a new <a> tag inside .media-mentions-row with class="media-mention-pill"
+  and an appropriate Font Awesome icon. Example:
+  <a href="URL" target="_blank" class="media-mention-pill">
+    <i class="fas fa-newspaper"></i> Publication Name
+  </a>
+-->
 <section id="media">
   <div style="max-width:1200px;margin:0 auto;">
     <div class="reveal dark-text">
@@ -1439,43 +1582,84 @@ footer {
       <h2 class="section-title">Talks &amp; Media</h2>
       <p class="section-intro media-intro">Conversations, panels, and public-facing work.</p>
     </div>
-    <div class="videos-grid">
+    <div class="videos-grid" id="videos-grid">
+      <!-- VIDEO 1 -->
       <div class="video-card reveal delay-1">
         <div class="video-wrapper">
           <iframe src="https://www.youtube.com/embed/k8LfXrMffXM" title="Climate, Rights & Resilience" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-info">
           <div class="video-title">Climate, Rights &amp; Resilience — Adolescents and Youth Leading Change</div>
-          <div class="video-desc">Youth-led climate and SRHR advocacy and the intersections of climate justice and reproductive rights.</div>
+          <div class="video-desc">Youth-led climate and SRHR advocacy, and the intersections of climate justice and reproductive rights.</div>
         </div>
       </div>
+      <!-- VIDEO 2 -->
       <div class="video-card reveal delay-2">
         <div class="video-wrapper">
           <iframe src="https://www.youtube.com/embed/pYJvx4ESXmw" title="Web's Most Searched Question on Abortion" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-info">
           <div class="video-title">Web's Most Searched Question on Abortion</div>
-          <div class="video-desc">Addressing the most searched abortion-related questions online, breaking stigma through direct, evidence-based answers.</div>
+          <div class="video-desc">Breaking abortion stigma through direct, evidence-based answers to the internet's most asked questions.</div>
         </div>
       </div>
+      <!-- VIDEO 3 -->
       <div class="video-card reveal delay-3">
         <div class="video-wrapper">
           <iframe src="https://www.youtube.com/embed/FFnsHAqtQU0" title="Inclusive SRHR" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-info">
           <div class="video-title">Inclusive SRHR: Bridging Gaps for Diverse Communities</div>
-          <div class="video-desc">A panel discussion on making SRHR services inclusive and accessible for marginalized communities.</div>
+          <div class="video-desc">A panel discussion on making sexual and reproductive health services accessible for marginalized communities.</div>
         </div>
       </div>
+      <!-- VIDEO 4 -->
+      <div class="video-card reveal delay-1">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/AyOZnRygzU0" title="Podcast" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-title">Podcast: SRHR, Advocacy &amp; Youth Leadership</div>
+          <div class="video-desc">A conversation on youth-led advocacy, sexual and reproductive health rights, and building movements from the ground up.</div>
+        </div>
+      </div>
+      <!-- VIDEO 5 -->
+      <div class="video-card reveal delay-2">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/47IM6jBfYsQ" title="ICFP 2025 Youth Trailblazer Award" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-title">ICFP 2025 Youth Trailblazer Award Winner</div>
+          <div class="video-desc">Recognition of Manisha Thapa at the International Conference on Family Planning 2025 as a Youth Trailblazer.</div>
+        </div>
+      </div>
+      <!-- ADD MORE VIDEOS HERE — copy a video-card block above -->
     </div>
-    <div class="media-mentions reveal">
-      <span class="media-mentions-label">As seen in</span>
-      <a href="https://kathmandupost.com/art-culture/2024/11/20/what-i-watch-online-manisha-thapa" target="_blank" class="media-mention-link">Kathmandu Post</a>
-      <a href="https://theicfp.org/2025-youth-trailblazers" target="_blank" class="media-mention-link">ICFP</a>
-      <a href="https://www.makeinroads.org/get-involved/fellowships/past/Manisha" target="_blank" class="media-mention-link">Make In Roads</a>
-      <a href="#" class="media-mention-link">WOSSO</a>
-      <a href="https://saafund.org/empowering-young-advocates-for-safe-abortion-in-nepal/" target="_blank" class="media-mention-link">SAAF</a>
-      <a href="https://visim.org" target="_blank" class="media-mention-link">VISIM</a>
+
+    <!-- ── AS SEEN IN ── -->
+    <div class="media-mentions-section reveal">
+      <div class="media-mentions-heading">Featured &amp; Mentioned In</div>
+      <div class="media-mentions-row">
+        <a href="https://kathmandupost.com/art-culture/2024/11/20/what-i-watch-online-manisha-thapa" target="_blank" class="media-mention-pill">
+          <i class="fas fa-newspaper"></i> Kathmandu Post
+        </a>
+        <a href="https://theicfp.org/2025-youth-trailblazers" target="_blank" class="media-mention-pill">
+          <i class="fas fa-award"></i> ICFP 2025
+        </a>
+        <a href="https://www.makeinroads.org/get-involved/fellowships/past/Manisha" target="_blank" class="media-mention-pill">
+          <i class="fas fa-palette"></i> Make In Roads
+        </a>
+        <a href="https://wosso.org/manisha-thapa/" target="_blank" class="media-mention-pill">
+          <i class="fas fa-users"></i> WOSSO
+        </a>
+        <a href="https://saafund.org/empowering-young-advocates-for-safe-abortion-in-nepal/" target="_blank" class="media-mention-pill">
+          <i class="fas fa-heart"></i> SAAF
+        </a>
+        <a href="https://visim.org" target="_blank" class="media-mention-pill">
+          <i class="fas fa-flask"></i> VISIM
+        </a>
+        <!-- ADD NEW MEDIA MENTIONS HERE — copy an <a> tag above -->
+      </div>
     </div>
   </div>
 </section>
@@ -1621,8 +1805,8 @@ footer {
       <div class="section-label" style="color:var(--gold)">Get in Touch</div>
       <h2>Let's<br>Connect</h2>
       <p>Whether it's collaboration on public health projects, media inquiries, travel stories, or just a good conversation — the inbox is open.</p>
-      <a href="mailto:email@gmail.com" class="contact-email">
-        <i class="fas fa-envelope"></i> email@gmail.com
+      <a href="mailto:thapamanishaaa@gmail.com" class="contact-email">
+        <i class="fas fa-envelope"></i> thapamanishaaa@gmail.com
       </a>
       <div class="social-links" style="flex-wrap:wrap;gap:0.75rem;">
         <a href="https://www.instagram.com/thapamanishaa/" target="_blank" class="social-link" style="border-color:rgba(255,255,255,0.1);color:rgba(245,240,234,0.5)"><i class="fab fa-instagram"></i></a>
@@ -1836,6 +2020,21 @@ window.addEventListener('scroll', () => {
   const heroBg = document.querySelector('.hero-bg');
   if (heroBg) heroBg.style.transform = `translateY(${scrollY * 0.3}px)`;
 }, { passive: true });
+
+// ─── SMART VIDEO GRID: set column count based on number of videos
+(function() {
+  const grid = document.getElementById('videos-grid');
+  if (!grid) return;
+  const count = grid.querySelectorAll('.video-card').length;
+  let cols;
+  if      (count <= 1) cols = 1;
+  else if (count <= 3) cols = count;
+  else if (count === 4) cols = 2;
+  else if (count <= 6) cols = 3;
+  else cols = 4;
+  grid.style.setProperty('--video-cols', cols);
+  // On mobile override handled by CSS media queries
+})();
 </script>
 </body>
 </html>
