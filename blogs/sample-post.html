@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="terracotta" data-display="fraunces" data-corners="soft">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finding Silence in Langtang — Manisha Thapa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/*
+  ════════════════════════════════════════════════════════════════
+  BLOG POST TEMPLATE — quick guide
+  ════════════════════════════════════════════════════════════════
+  1. Copy this file and rename to match your slug (e.g. "my-post.html")
+  2. Update the <title>, .post-cat, .post-title, .post-date,
+     and the hero cover (set --cover url(...) on .post-hero style)
+  3. Write body content inside .post-body using these blocks:
+       <p>Paragraph</p>
+       <h2>Section heading</h2>
+       <blockquote>Pull quote</blockquote>
+       <figure class="post-image"><img src="images/x.jpg"><figcaption>…</figcaption></figure>
+       <div class="post-image-pair">…two figures…</div>
+  4. Add an entry to blogs/index.json so it shows on listing pages.
+  ════════════════════════════════════════════════════════════════
+*/
+:root{
+  --paper:#F7F1E8;--paper-warm:#EFE6D7;--paper-deep:#E8DDC9;
+  --ink:#1C1A17;--ink-mid:#2E2A25;--ink-soft:#5A544D;--ink-mute:#8A8278;--ink-faint:#B5ACA0;
+  --accent:#C4582D;--accent-deep:#9E3F1B;--moss:#556E4D;--gold:#C09344;
+  --rule:rgba(28,26,23,0.10);
+  --r-sm:10px;--r-md:16px;--r-lg:22px;--r-xl:32px;--r-pill:999px;
+  --font-display:'Fraunces',Georgia,serif;
+  --font-body:'Inter Tight',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.7}
+body::before{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px;mix-blend-mode:multiply}
+::selection{background:var(--accent);color:var(--paper)}
+
+/* Reading progress bar */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:101;background:transparent}
+.progress-bar{height:100%;background:var(--accent);width:0%;transition:width 0.08s linear}
+
+/* NAV */
+nav{
+  position:sticky;top:14px;z-index:100;
+  margin:14px auto 0;width:min(94%,980px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1rem 0 1.25rem;height:52px;
+  background:color-mix(in oklab,var(--paper) 80%,transparent);
+  backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid var(--rule);border-radius:var(--r-pill);
+  box-shadow:0 10px 40px -20px rgba(28,26,23,0.2);
+}
+.nav-logo{font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:0.55rem}
+.nav-logo .monogram{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--font-display);font-size:0.85rem;font-style:italic}
+.nav-back{display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;font-family:var(--font-body);font-size:0.8rem;font-weight:500;color:var(--paper);background:var(--ink);border-radius:var(--r-pill);text-decoration:none;transition:all .25s var(--ease)}
+.nav-back:hover{background:var(--accent)}
+
+/* HERO */
+.post-hero{
+  padding:8rem 5vw 3rem;
+  text-align:center;
+  max-width:900px;margin:0 auto;
+}
+.post-cat{
+  font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.25rem;
+  display:inline-flex;align-items:center;gap:0.65rem;
+}
+.post-cat::before{content:'';width:24px;height:1px;background:var(--accent)}
+h1.post-title{
+  font-family:var(--font-display);font-size:clamp(2.6rem,5.5vw,4.5rem);font-weight:300;
+  color:var(--ink);line-height:1.05;letter-spacing:-0.025em;
+  font-variation-settings:"SOFT" 90;
+  max-width:20ch;margin:0 auto 1.5rem;
+}
+h1.post-title em{font-style:italic;color:var(--accent)}
+.post-meta{
+  display:inline-flex;align-items:center;gap:1.25rem;flex-wrap:wrap;justify-content:center;
+  font-family:var(--font-mono);font-size:0.74rem;color:var(--ink-mute);letter-spacing:0.06em;
+  margin-bottom:2.5rem;
+}
+.post-meta .divider{width:20px;height:1px;background:var(--ink-faint)}
+.post-meta span strong{color:var(--ink);font-weight:500}
+
+/* Cover image */
+.post-cover{
+  max-width:1100px;margin:0 auto 4rem;padding:0 5vw;
+}
+.post-cover-frame{
+  aspect-ratio:16/9;
+  border-radius:var(--r-xl);overflow:hidden;
+  background:linear-gradient(135deg,#3E5340,#6B8A5F);
+  position:relative;display:grid;place-items:center;
+  box-shadow:0 40px 80px -30px rgba(28,26,23,0.35);
+}
+.post-cover-frame.advocacy{background:linear-gradient(135deg,#C4582D,#8A3D1E)}
+.post-cover-frame.art{background:linear-gradient(135deg,#C09344,#8A6E28)}
+.post-cover-frame.research{background:linear-gradient(135deg,#2B3B52,#1A2838)}
+.post-cover-frame.reflection{background:linear-gradient(135deg,#6D3958,#4F2840)}
+.post-cover-frame::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0 20px,rgba(255,255,255,0.04) 20px 21px)}
+.post-cover-frame i{font-size:3.5rem;color:rgba(255,255,255,0.4);position:relative}
+.post-cover-frame img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* BODY */
+.post-body{
+  max-width:700px;margin:0 auto;padding:0 5vw 4rem;
+  font-size:1.08rem;color:var(--ink-mid);
+}
+.post-body p{margin-bottom:1.4rem}
+.post-body p:first-of-type::first-letter{
+  font-family:var(--font-display);font-weight:400;
+  font-size:4rem;line-height:0.85;
+  float:left;padding:0.3rem 0.5rem 0 0;
+  color:var(--accent);font-style:italic;
+  font-variation-settings:"SOFT" 100;
+}
+.post-body h2{
+  font-family:var(--font-display);font-weight:500;
+  font-size:1.9rem;letter-spacing:-0.01em;
+  color:var(--ink);margin:3rem 0 1rem;line-height:1.2;
+  font-variation-settings:"SOFT" 80;
+}
+.post-body h2 em{font-style:italic;color:var(--accent)}
+.post-body blockquote{
+  font-family:var(--font-display);font-style:italic;font-weight:300;
+  font-size:1.5rem;line-height:1.4;color:var(--ink);
+  padding:2rem 0 2rem 1.75rem;margin:2.5rem 0;
+  border-left:3px solid var(--accent);
+  letter-spacing:-0.01em;
+  font-variation-settings:"SOFT" 100;
+}
+.post-body a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in oklab,var(--accent) 40%,transparent);transition:border-color .2s}
+.post-body a:hover{border-color:var(--accent)}
+.post-body ul, .post-body ol{margin:0 0 1.4rem 1.5rem}
+.post-body li{margin-bottom:0.5rem}
+.post-body strong{color:var(--ink);font-weight:600}
+
+/* Figures — break out to full bleed beyond the text column */
+.post-image{margin:2.5rem -3rem;max-width:calc(100% + 6rem)}
+.post-image img{width:100%;display:block;border-radius:var(--r-lg)}
+.post-image figcaption{
+  font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.04em;
+  color:var(--ink-mute);margin-top:0.75rem;text-align:center;
+  font-style:normal;
+}
+.post-image-pair{
+  display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;
+  margin:2.5rem -3rem;max-width:calc(100% + 6rem);
+}
+.post-image-pair .post-image{margin:0;max-width:none}
+.post-image-placeholder{
+  aspect-ratio:16/10;border-radius:var(--r-lg);
+  background:linear-gradient(135deg,var(--paper-deep),var(--paper-warm));
+  display:grid;place-items:center;color:var(--ink-mute);font-family:var(--font-mono);font-size:0.8rem;
+  border:1px solid var(--rule);
+}
+@media (max-width:780px){
+  .post-image,.post-image-pair{margin-left:0;margin-right:0;max-width:100%}
+  .post-image-pair{grid-template-columns:1fr}
+}
+
+/* BYLINE / AUTHOR */
+.byline{
+  max-width:700px;margin:3rem auto 0;padding:2rem;
+  background:var(--paper-warm);border:1px solid var(--rule);border-radius:var(--r-lg);
+  display:flex;align-items:center;gap:1.25rem;
+}
+.byline-avatar{
+  width:60px;height:60px;border-radius:50%;
+  background:var(--ink);color:var(--paper);
+  display:grid;place-items:center;
+  font-family:var(--font-display);font-style:italic;font-size:1.5rem;
+  flex-shrink:0;
+}
+.byline-info{flex:1}
+.byline-name{font-family:var(--font-display);font-weight:500;font-size:1.1rem;letter-spacing:-0.005em;margin-bottom:0.15rem}
+.byline-bio{font-size:0.85rem;color:var(--ink-soft);line-height:1.5}
+.byline a{color:var(--accent);text-decoration:none}
+
+/* NEXT / BACK footer */
+.post-footer{
+  max-width:900px;margin:4rem auto 0;padding:4rem 5vw 6rem;
+  border-top:1px solid var(--rule);
+  text-align:center;
+}
+.post-footer-label{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem}
+.post-footer-links{
+  display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;
+}
+.post-footer-links a{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.85rem 1.5rem;border-radius:var(--r-pill);
+  background:var(--paper-warm);border:1px solid var(--rule);
+  color:var(--ink);text-decoration:none;font-size:0.85rem;font-weight:500;
+  transition:all .25s var(--ease);
+}
+.post-footer-links a:hover{background:var(--ink);color:var(--paper);border-color:var(--ink);transform:translateY(-2px)}
+.post-footer-links a.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.post-footer-links a.primary:hover{background:var(--accent);border-color:var(--accent)}
+
+footer{padding:3rem 5vw;border-top:1px solid var(--rule);text-align:center;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;color:var(--ink-mute);background:var(--paper-warm)}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+
+<nav>
+  <a href="../index.html" class="nav-logo"><span class="monogram">M</span> Manisha Thapa</a>
+  <a href="index.html" class="nav-back"><i class="fas fa-arrow-left" style="font-size:0.7rem"></i> All posts</a>
+</nav>
+
+<!-- HERO -->
+<header class="post-hero">
+  <div class="post-cat">Travel · Field notes</div>
+  <h1 class="post-title">Finding silence in <em>Langtang.</em></h1>
+  <div class="post-meta">
+    <span>December 2, <strong>2025</strong></span>
+    <span class="divider"></span>
+    <span><i class="far fa-clock"></i> 7 min read</span>
+    <span class="divider"></span>
+    <span>By <strong>Manisha Thapa</strong></span>
+  </div>
+</header>
+
+<!-- COVER -->
+<div class="post-cover">
+  <div class="post-cover-frame">
+    <!-- Replace with: <img src="../blogs/covers/langtang.jpg" alt="Langtang"> -->
+    <i class="fas fa-mountain"></i>
+  </div>
+</div>
+
+<!-- BODY -->
+<article class="post-body">
+  <p>
+    There is a particular kind of silence in the high Himalayas that feels almost consensual — as though the mountains and the wind and the occasional dzo bell have all agreed that nothing more needs to be said. I went to Langtang in late autumn, after a year that had felt, in my own language, far too loud.
+  </p>
+  <p>
+    I had been running a menstrual-health research study, facilitating youth gatherings across three provinces, and trying to finish a grant application in between. The body keeps the score, people say; mine had started to keep a very detailed, very impatient one. So I packed a small pack, left my laptop behind, and walked.
+  </p>
+
+  <blockquote>
+    The trail does not care what you've accomplished this year. The trail only cares whether you can carry your own water and sleep through the cold.
+  </blockquote>
+
+  <h2>On walking <em>alone</em></h2>
+  <p>
+    Solo female travel in Nepal is a politically charged phrase. It carries other people's anxieties more than your own. In Kathmandu, a relative will warn you about "the boys in the hills"; in the hills, a tea-house owner will warn you about "the boys in the city". Everywhere, the threat is relocated to somewhere just over the ridge. I've learned to listen for the <strong>real</strong> warnings — about weather, about altitude, about water — and to let the other ones wash off.
+  </p>
+  <p>
+    What walking alone gave me, on this trip, was an unfamiliar experience: no one to perform for. Not even kindly. Nobody to narrate the view to, nobody to prove a point to, nobody to reassure. Just me and a rhythm of four steps, one breath.
+  </p>
+
+  <figure class="post-image">
+    <div class="post-image-placeholder">IMAGE · Ridge at Kyanjin Ri, 4,700m</div>
+    <figcaption>Ridge at Kyanjin Ri, 4,700m — the turning point where the valley opens into the wider Himal.</figcaption>
+  </figure>
+
+  <h2>Altitude &amp; <em>attention</em></h2>
+  <p>
+    Above 3,500 metres, your attention narrows whether you like it or not. The things that felt important at the trailhead — emails, the state of a paper draft, a small political feud in a WhatsApp group — just stop mattering. You notice water, breath, warm socks, and the way clouds rearrange themselves around the valley in the late afternoon.
+  </p>
+  <p>
+    I started paying attention to the women on the trail. The didi at the bhatti in Lama Hotel who ran a tea-house, a garden, and three children with calm precision. The Tamang woman spinning wool in a doorway at Mundu. The two German women in their sixties who passed me on the descent, not even slightly winded. The quiet lesson was that competence, at altitude, doesn't announce itself.
+  </p>
+
+  <div class="post-image-pair">
+    <figure class="post-image">
+      <div class="post-image-placeholder">IMAGE · Tea house, Lama Hotel</div>
+      <figcaption>A tea-house at Lama Hotel, 2,470m.</figcaption>
+    </figure>
+    <figure class="post-image">
+      <div class="post-image-placeholder">IMAGE · Prayer flags, Kyanjin Gompa</div>
+      <figcaption>Prayer flags above the gompa.</figcaption>
+    </figure>
+  </div>
+
+  <h2>Coming down</h2>
+  <p>
+    The descent is its own kind of research. You walk out with material — visual, emotional, intellectual — that you have to sit with for months before you know what any of it meant. I wrote very little in my notebook. What I did write, in black ink on the last morning in Kyanjin, was this: <em>the work I want to do is the work that lets me go to places like this without feeling like I'm hiding from it.</em>
+  </p>
+  <p>
+    That sentence has stayed with me since. It's begun to shape my MPH applications, my day-to-day decisions at UFC, and, quietly, the kind of art I'm making. I don't think advocacy has to be loud to be serious. The mountains seem to agree.
+  </p>
+
+  <div class="byline">
+    <div class="byline-avatar">M</div>
+    <div class="byline-info">
+      <div class="byline-name">Manisha Thapa</div>
+      <p class="byline-bio">Public health practitioner, SRHR activist, and solo traveler based in Kathmandu. Program Lead at Unity for Change. <a href="../index.html">Read more →</a></p>
+    </div>
+  </div>
+</article>
+
+<!-- POST FOOTER -->
+<div class="post-footer">
+  <div class="post-footer-label">Continue reading</div>
+  <div class="post-footer-links">
+    <a href="index.html"><i class="fas fa-arrow-left" style="font-size:0.75rem"></i> All posts</a>
+    <a href="../index.html#contact" class="primary">Get in touch <i class="fas fa-arrow-right" style="font-size:0.75rem"></i></a>
+  </div>
+</div>
+
+<footer>
+  © <span id="yr"></span> Manisha Thapa · <a href="../index.html">Back to portfolio</a>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+// Reading progress
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const total = h.scrollHeight - h.clientHeight;
+  const pct = total > 0 ? (h.scrollTop / total) * 100 : 0;
+  bar.style.width = pct + '%';
+}, { passive: true });
+</script>
+</body>
+</html>
