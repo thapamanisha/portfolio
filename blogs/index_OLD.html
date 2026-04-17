@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="terracotta" data-display="fraunces" data-corners="soft">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Notes & Stories — Manisha Thapa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --paper:#F7F1E8;--paper-warm:#EFE6D7;--paper-deep:#E8DDC9;
+  --ink:#1C1A17;--ink-mid:#2E2A25;--ink-soft:#5A544D;--ink-mute:#8A8278;--ink-faint:#B5ACA0;
+  --accent:#C4582D;--accent-deep:#9E3F1B;--moss:#556E4D;--gold:#C09344;
+  --rule:rgba(28,26,23,0.10);--rule-soft:rgba(28,26,23,0.06);
+  --r-sm:10px;--r-md:16px;--r-lg:22px;--r-xl:32px;--r-pill:999px;
+  --font-display:'Fraunces',Georgia,serif;
+  --font-body:'Inter Tight',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55}
+body::before{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.045;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px;mix-blend-mode:multiply}
+::selection{background:var(--accent);color:var(--paper)}
+
+/* NAV */
+nav{
+  position:sticky;top:14px;z-index:100;
+  margin:14px auto 0;width:min(94%,980px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1rem 0 1.25rem;height:52px;
+  background:color-mix(in oklab,var(--paper) 80%,transparent);
+  backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid var(--rule);border-radius:var(--r-pill);
+  box-shadow:0 10px 40px -20px rgba(28,26,23,0.2);
+}
+.nav-logo{font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:0.55rem;letter-spacing:-0.01em}
+.nav-logo .monogram{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--font-display);font-size:0.85rem;font-style:italic}
+.nav-back{display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;font-family:var(--font-body);font-size:0.8rem;font-weight:500;color:var(--paper);background:var(--ink);border-radius:var(--r-pill);text-decoration:none;transition:all .25s var(--ease)}
+.nav-back:hover{background:var(--accent)}
+
+/* HEADER */
+.page-header{
+  padding:9rem 5vw 5rem;
+  text-align:center;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 30%,color-mix(in oklab,var(--accent) 14%,transparent),transparent 60%),
+    radial-gradient(ellipse 55% 70% at 15% 80%,color-mix(in oklab,var(--moss) 14%,transparent),transparent 55%),
+    var(--paper);
+  position:relative;
+}
+.page-header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:1px;background:var(--accent)}
+.ph-label{
+  font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.25rem;
+}
+.page-header h1{
+  font-family:var(--font-display);font-size:clamp(3rem,7vw,6rem);font-weight:300;
+  color:var(--ink);letter-spacing:-0.025em;line-height:1;
+  font-variation-settings:"SOFT" 90;
+}
+.page-header h1 em{font-style:italic;color:var(--accent);font-variation-settings:"SOFT" 100}
+.page-sub{
+  font-family:var(--font-display);font-style:italic;font-size:clamp(1.05rem,1.5vw,1.25rem);
+  color:var(--ink-soft);margin-top:1.25rem;max-width:560px;margin-left:auto;margin-right:auto;
+}
+
+/* FILTER BAR */
+.filter-bar{
+  max-width:1200px;margin:3rem auto 0;padding:0 5vw;
+  display:flex;flex-wrap:wrap;gap:0.4rem;align-items:center;justify-content:center;
+}
+.filter-chip{
+  font-family:var(--font-body);font-size:0.8rem;padding:0.55rem 1.1rem;
+  background:var(--paper-warm);border:1px solid var(--rule);color:var(--ink-soft);
+  border-radius:var(--r-pill);cursor:pointer;transition:all .25s var(--ease);
+}
+.filter-chip:hover{border-color:var(--ink);color:var(--ink)}
+.filter-chip.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.filter-chip .count{font-family:var(--font-mono);font-size:0.66rem;opacity:0.6;margin-left:0.35rem}
+
+/* LISTING */
+.listing-wrap{max-width:1200px;margin:0 auto;padding:4rem 5vw 6rem}
+.blog-listing{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;
+}
+.blog-card{
+  background:var(--paper-warm);border:1px solid var(--rule);border-radius:var(--r-lg);
+  overflow:hidden;text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;
+  transition:all .3s var(--ease);
+}
+.blog-card:hover{transform:translateY(-5px);box-shadow:0 30px 50px -20px rgba(28,26,23,0.18);border-color:color-mix(in oklab,var(--accent) 30%,var(--rule))}
+.blog-cover{height:220px;overflow:hidden;position:relative}
+.blog-cover img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.blog-card:hover .blog-cover img{transform:scale(1.05)}
+.blog-cover-placeholder{width:100%;height:100%;display:grid;place-items:center;position:relative;overflow:hidden}
+.blog-cover-placeholder::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0 12px,rgba(255,255,255,0.06) 12px 13px)}
+.blog-cover-placeholder.travel{background:linear-gradient(135deg,#3E5340,#6B8A5F)}
+.blog-cover-placeholder.advocacy{background:linear-gradient(135deg,#C4582D,#8A3D1E)}
+.blog-cover-placeholder.art{background:linear-gradient(135deg,#C09344,#8A6E28)}
+.blog-cover-placeholder.research{background:linear-gradient(135deg,#2B3B52,#1A2838)}
+.blog-cover-placeholder.reflection{background:linear-gradient(135deg,#6D3958,#4F2840)}
+.blog-cover-placeholder i{font-size:2.4rem;color:rgba(255,255,255,0.45);position:relative}
+.blog-body{padding:1.5rem 1.5rem 1.75rem;flex:1;display:flex;flex-direction:column}
+.blog-cat{font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.5rem}
+.blog-cat::after{content:'•';color:var(--ink-faint)}
+.blog-date{font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.08em;color:var(--ink-mute)}
+.blog-title{font-family:var(--font-display);font-size:1.3rem;font-weight:500;line-height:1.25;color:var(--ink);margin-bottom:0.6rem;letter-spacing:-0.01em}
+.blog-excerpt{font-size:0.88rem;color:var(--ink-soft);line-height:1.65;flex:1;margin-bottom:1rem}
+.blog-read{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:0.45rem;transition:gap .25s var(--ease);margin-top:auto}
+.blog-card:hover .blog-read{gap:0.7rem}
+
+/* Featured (first card) */
+.blog-card.featured{grid-column:span 2;flex-direction:row}
+.blog-card.featured .blog-cover{height:auto;flex:1}
+.blog-card.featured .blog-body{flex:1;padding:2.5rem}
+.blog-card.featured .blog-title{font-size:1.8rem;margin-bottom:0.85rem}
+.blog-card.featured .blog-excerpt{font-size:0.95rem}
+@media (max-width:780px){.blog-card.featured{grid-column:span 1;flex-direction:column}.blog-card.featured .blog-cover{height:220px}}
+
+.empty-state{grid-column:1/-1;text-align:center;color:var(--ink-mute);padding:4rem 2rem;font-size:0.95rem}
+.empty-state i{font-size:2rem;color:var(--ink-faint);margin-bottom:1rem;display:block}
+
+/* FOOTER */
+footer{padding:3rem 5vw;border-top:1px solid var(--rule);text-align:center;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;color:var(--ink-mute);background:var(--paper-warm)}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo"><span class="monogram">M</span> Manisha Thapa</a>
+  <a href="../index.html" class="nav-back"><i class="fas fa-arrow-left" style="font-size:0.7rem"></i> Back to portfolio</a>
+</nav>
+
+<header class="page-header">
+  <div class="ph-label">Writing &amp; journal</div>
+  <h1>Field notes &amp; <em>stories</em></h1>
+  <p class="page-sub">Essays, travel journals, and reflections — from the research desk to the trailhead.</p>
+</header>
+
+<div class="filter-bar" id="filter-bar">
+  <button class="filter-chip active" data-cat="All">All posts</button>
+  <!-- filled in by JS -->
+</div>
+
+<div class="listing-wrap">
+  <div class="blog-listing" id="blog-listing">
+    <div class="empty-state"><i class="fas fa-circle-notch fa-spin"></i>Loading posts…</div>
+  </div>
+</div>
+
+<footer>
+  © <span id="yr"></span> Manisha Thapa · <a href="../index.html">Back to portfolio</a>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const catIcons = { Travel:'fa-mountain', Advocacy:'fa-fist-raised', Art:'fa-palette', Research:'fa-flask', Reflection:'fa-pen' };
+const catCls = { Travel:'travel', Advocacy:'advocacy', Art:'art', Research:'research', Reflection:'reflection' };
+
+// Fallback posts shown when index.json is empty/missing
+const FALLBACK = [
+  { slug:'sample-post', title:'Finding silence in Langtang', date:'2025-12-02', category:'Travel',
+    excerpt:'A week above the tree line — on walking alone, altitude, and the quiet politics of solitude for a woman in the mountains.' },
+  { slug:'sample-post', title:'When advocacy is also art', date:'2025-10-14', category:'Advocacy',
+    excerpt:'Notes on live painting at a Ministry of Health event — and what happens to a policy room when ink lands on paper in front of it.' },
+  { slug:'sample-post', title:'Why I\u2019m applying to an MPH at 29', date:'2025-08-22', category:'Reflection',
+    excerpt:'On coming back to a classroom after five years of fieldwork — and what I\u2019m hoping to borrow, question, and eventually give back.' },
+  { slug:'sample-post', title:'Menstruation, migration, and the men we forget', date:'2025-05-11', category:'Research',
+    excerpt:'Field notes from a qualitative study on menstrual discrimination among transmen in urban Nepal.' },
+  { slug:'sample-post', title:'A week in Rishikesh — art as rest', date:'2024-11-18', category:'Travel',
+    excerpt:'Painting by the Ganga, silence as a discipline, and the slow art of not planning the next thing.' },
+  { slug:'sample-post', title:'The politics of the hostel dorm', date:'2024-07-02', category:'Reflection',
+    excerpt:'Solo female travel, safety theatrics, and what we give up to feel at home in a shared room.' },
+];
+
+function render(posts, cat){
+  const listing = document.getElementById('blog-listing');
+  const filtered = cat && cat !== 'All' ? posts.filter(p => (p.category||'Travel') === cat) : posts;
+  const sorted = [...filtered].sort((a,b) => new Date(b.date) - new Date(a.date));
+  if (!sorted.length) { listing.innerHTML = `<div class="empty-state"><i class="far fa-folder-open"></i>No posts in this category yet.</div>`; return; }
+  listing.innerHTML = sorted.map((post,i) => {
+    const cat2 = post.category || 'Travel';
+    const cls = catCls[cat2] || 'travel';
+    const icon = catIcons[cat2] || 'fa-pen';
+    const dt = post.date ? new Date(post.date).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}) : '';
+    const featured = i === 0 && (!cat || cat === 'All') ? 'featured' : '';
+    const cover = post.cover
+      ? `<img src="../${post.cover}" alt="${post.title}" onerror="this.parentElement.innerHTML='<div class=\\'blog-cover-placeholder ${cls}\\'><i class=\\'fas ${icon}\\'></i></div>'">`
+      : `<div class="blog-cover-placeholder ${cls}"><i class="fas ${icon}"></i></div>`;
+    return `<a href="${post.slug}.html" class="blog-card ${featured}">
+      <div class="blog-cover">${cover}</div>
+      <div class="blog-body">
+        <div class="blog-cat">${cat2} <span class="blog-date">${dt}</span></div>
+        <div class="blog-title">${post.title}</div>
+        <p class="blog-excerpt">${post.excerpt}</p>
+        <span class="blog-read">Read essay <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </a>`;
+  }).join('');
+}
+
+function renderFilters(posts){
+  const bar = document.getElementById('filter-bar');
+  const cats = {};
+  posts.forEach(p => { const c = p.category||'Travel'; cats[c] = (cats[c]||0)+1; });
+  bar.querySelector('[data-cat="All"]').innerHTML = `All posts <span class="count">${posts.length}</span>`;
+  Object.entries(cats).forEach(([c,n]) => {
+    const b = document.createElement('button');
+    b.className = 'filter-chip'; b.dataset.cat = c;
+    b.innerHTML = `${c} <span class="count">${n}</span>`;
+    bar.appendChild(b);
+  });
+  bar.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      bar.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      render(posts, chip.dataset.cat);
+    });
+  });
+}
+
+fetch('index.json')
+  .then(r => r.ok ? r.json() : null)
+  .then(posts => {
+    const list = (Array.isArray(posts) && posts.length) ? posts : FALLBACK;
+    renderFilters(list);
+    render(list, 'All');
+  })
+  .catch(() => { renderFilters(FALLBACK); render(FALLBACK, 'All'); });
+</script>
+</body>
+</html>
