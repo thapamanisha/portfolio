@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manisha Thapa — Public Health Practitioner & SRHR Activist</title>
+<meta name="description" content="Manisha Thapa — Public health practitioner, SRHR activist, climate advocate, artist, and solo traveler based in Kathmandu, Nepal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --bg: #faf6f1;
+  --bg-dark: #1c1a17;
+  --bg-mid: #2e2a25;
+  --accent: #c45c2e;
+  --accent-2: #4a7c59;
+  --gold: #c9a84c;
+  --text: #2e2a25;
+  --text-light: #7a7269;
+  --text-muted: #a09890;
+  --border: rgba(46,42,37,0.12);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ─── SCROLL ANIMATIONS ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-left.visible { opacity: 1; transform: none; }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-right.visible { opacity: 1; transform: none; }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw;
+  height: 64px;
+  background: rgba(250,246,241,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+nav.dark-bg {
+  background: rgba(28,26,23,0.92);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav.dark-bg .nav-logo { color: #f5f0ea; }
+.nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.nav-links a {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0; right: 0; height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+nav.dark-bg .nav-links a { color: rgba(245,240,234,0.55); }
+nav.dark-bg .nav-links a:hover, nav.dark-bg .nav-links a.active { color: var(--gold); }
+nav.dark-bg .nav-links a::after { background: var(--gold); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px; background: var(--text);
+  transition: all 0.3s;
+}
+nav.dark-bg .hamburger span { background: #f5f0ea; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+  background: var(--bg); z-index: 99; flex-direction: column;
+  align-items: center; justify-content: center; gap: 2.5rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 400; color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--accent); }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 64px 0 0;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(196,92,46,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 70%, rgba(74,124,89,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 50% 20%, rgba(201,168,76,0.05) 0%, transparent 50%),
+    var(--bg);
+}
+.hero-grain {
+  position: absolute; inset: 0; z-index: 0; opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px;
+}
+.hero-content {
+  padding: 6rem 5vw 5rem 8vw;
+  position: relative; z-index: 2;
+}
+.hero-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block; width: 32px; height: 1px; background: var(--accent);
+}
+h1.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+h1.hero-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-roles {
+  height: 2rem;
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+.hero-role {
+  position: absolute;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--text-light);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.hero-role.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-light);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+.hero-cta {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+.btn-primary:hover {
+  background: #a84b23;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(196,92,46,0.3);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--text);
+  transform: translateY(-2px);
+}
+
+.hero-visual {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  height: 100vh;
+  padding-right: 5vw;
+}
+.hero-portrait-frame {
+  position: relative;
+  width: min(380px, 80%);
+}
+.hero-portrait-frame::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 100%; height: 100%;
+  border: 2px solid var(--accent);
+  opacity: 0.3;
+  z-index: -1;
+}
+.hero-portrait-frame::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; left: -20px;
+  width: 100%; height: 100%;
+  background: var(--accent-2);
+  opacity: 0.08;
+  z-index: -1;
+}
+.hero-portrait {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+  /* Replace src with actual photo */
+  background: linear-gradient(160deg, #d4c4b0 0%, #b8a898 40%, #9e9080 100%);
+}
+.hero-portrait-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(160deg, #e8ddd4 0%, #d4c4b0 40%, #c0b09a 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.5rem;
+  color: var(--text-light);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+.hero-portrait-placeholder i { font-size: 2rem; opacity: 0.4; }
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-muted);
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ─── SECTION SHARED ─── */
+section { position: relative; }
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-label::before {
+  content: ''; display: block; width: 24px; height: 1px; background: var(--accent);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.section-intro {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+.dark-text .section-title { color: #f5f0ea; }
+.dark-text .section-label { color: var(--gold); }
+.dark-text .section-label::before { background: var(--gold); }
+.dark-text .section-intro { color: rgba(245,240,234,0.4); }
+
+/* ─── PERSPECTIVE ─── */
+#perspective {
+  padding: 5rem 8vw;
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+.perspective-inner {
+  max-width: 820px; margin: 0 auto;
+  text-align: center;
+}
+.perspective-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #f5f0ea;
+  line-height: 1.6;
+}
+.perspective-quote span { color: var(--gold); }
+
+/* ─── ABOUT ─── */
+#about {
+  padding: 7rem 8vw;
+  overflow: hidden;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: start;
+  max-width: 1200px; margin: 0 auto;
+}
+.about-pull {
+  position: sticky; top: 100px;
+}
+.pull-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text);
+  padding-left: 1.75rem;
+  border-left: 3px solid var(--accent);
+  margin-bottom: 2rem;
+}
+.about-text p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-light);
+  margin-bottom: 1.25rem;
+}
+.about-text p strong { color: var(--text); font-weight: 500; }
+.stat-pills {
+  display: flex; flex-wrap: wrap; gap: 0.6rem;
+  margin-top: 3rem; padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  grid-column: 1 / -1;
+}
+.pill {
+  display: inline-flex; align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  border: 1.5px solid var(--border);
+  color: var(--text-light);
+  transition: all 0.2s;
+}
+.pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(196,92,46,0.05);
+}
+
+/* ─── SKILLS ─── */
+#skills {
+  padding: 6rem 8vw;
+  background: #f3ede5;
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  max-width: 1200px; margin: 0 auto;
+}
+.skill-group h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+.skill-tags {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.skill-tag {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.7rem;
+  background: white;
+  color: var(--text-light);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.skill-tag:hover {
+  background: var(--accent);
+  color: white; border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* ─── WORK / EXPERIENCE ─── */
+#work {
+  padding: 7rem 8vw;
+  background: var(--bg-dark);
+}
+.work-framing {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(245,240,234,0.6);
+  max-width: 640px;
+  margin-bottom: 4rem;
+  line-height: 1.7;
+}
+.timeline {
+  max-width: 900px;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute; left: 7rem; top: 0; bottom: 0;
+  width: 1px; background: rgba(255,255,255,0.08);
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 0 2.5rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute; left: calc(7rem - 4px); top: 6px;
+  width: 8px; height: 8px;
+  border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(196,92,46,0.2);
+}
+.timeline-year {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+  padding-top: 4px;
+  text-align: right;
+  padding-right: 2.5rem;
+}
+.timeline-body {}
+.timeline-role {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #f5f0ea;
+  margin-bottom: 0.15rem;
+}
+.timeline-org {
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.timeline-desc {
+  font-size: 0.88rem;
+  color: rgba(245,240,234,0.5);
+  line-height: 1.7;
+}
+
+/* ─── AWARDS ─── */
+#awards {
+  padding: 6rem 0;
+  background: var(--bg);
+  overflow: hidden;
+}
+.awards-header {
+  padding: 0 8vw;
+  margin-bottom: 3rem;
+}
+/* Auto-scrolling marquee ticker */
+.awards-marquee-wrap {
+  overflow: hidden;
+  padding: 1rem 0 2rem;
+  position: relative;
+}
+/* Fade edges on desktop */
+.awards-marquee-wrap::before,
+.awards-marquee-wrap::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+  pointer-events: none;
+}
+.awards-marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+.awards-marquee-wrap::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+.awards-track {
+  display: flex; gap: 1.5rem;
+  width: max-content;
+  animation: awards-scroll 32s linear infinite;
+}
+.awards-track:hover { animation-play-state: paused; }
+@keyframes awards-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (max-width: 600px) {
+  .awards-marquee-wrap::before,
+  .awards-marquee-wrap::after { width: 40px; }
+  .awards-track { animation-duration: 22s; }
+}
+.awards-row {
+  display: flex; gap: 1.5rem;
+  width: max-content;
+}
+.award-card {
+  width: 280px; flex-shrink: 0;
+  padding: 2rem 1.75rem;
+  background: white;
+  border: 1px solid var(--border);
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.award-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.award-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+}
+.award-card:hover::before { transform: scaleX(1); }
+.award-icon {
+  font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem;
+}
+.award-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 600; line-height: 1.3;
+  color: var(--text); margin-bottom: 0.4rem;
+}
+.award-org { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+.award-year { font-size: 0.75rem; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; }
+
+/* ─── PUBLICATIONS ─── */
+#publications {
+  padding: 7rem 8vw;
+  background: #f3ede5;
+}
+.pubs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px; margin: 0 auto;
+}
+.pub-card {
+  background: white;
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  transition: all 0.25s;
+  display: flex; flex-direction: column;
+}
+.pub-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+}
+.pub-badge {
+  display: inline-block;
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  margin-bottom: 0.75rem;
+  background: var(--accent);
+  color: white;
+  width: fit-content;
+}
+.pub-badge.policy { background: var(--accent-2); }
+.pub-badge.blog { background: var(--gold); }
+.pub-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 600; line-height: 1.35;
+  color: var(--text); margin-bottom: 0.5rem;
+}
+.pub-meta {
+  font-size: 0.78rem; color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.pub-desc {
+  font-size: 0.85rem; color: var(--text-light);
+  flex: 1;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+.pub-link {
+  font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  transition: gap 0.2s;
+}
+.pub-link:hover { gap: 0.7rem; }
+
+/* ─── MEDIA / TALKS ─── */
+#media {
+  padding: 7rem 8vw;
+  background: var(--bg-dark);
+}
+.media-intro { color: rgba(245,240,234,0.45); margin-bottom: 3.5rem; }
+
+/*
+  Smart responsive grid:
+  1 video  → 1 col
+  2 videos → 2 col
+  3 videos → 3 col  (one row)
+  4 videos → 2×2
+  5 videos → 3 top + 2 bottom (auto-fit handles this)
+  6 videos → 3×2
+  We set max columns via CSS custom property updated by JS.
+*/
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--video-cols, 3), 1fr);
+  gap: 1.75rem;
+  max-width: 1200px; margin: 0 auto 5rem;
+}
+@media (max-width: 900px) { .videos-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .videos-grid { grid-template-columns: 1fr; } }
+
+.video-card {
+  position: relative; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.3s;
+}
+.video-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.video-wrapper {
+  position: relative; padding-bottom: 56.25%; overflow: hidden;
+}
+/* Portrait/9:16 variant for Instagram reels */
+.video-wrapper.portrait { padding-bottom: 177.78%; }
+.video-wrapper iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; border: 0;
+}
+.video-info {
+  padding: 1.25rem 1.5rem;
+  background: rgba(255,255,255,0.03);
+}
+.video-title {
+  font-size: 0.92rem; font-weight: 500;
+  color: #f5f0ea; margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+.video-desc { font-size: 0.8rem; color: rgba(245,240,234,0.45); line-height: 1.5; }
+
+/* ─── AS SEEN IN — prominent bar ─── */
+.media-mentions-section {
+  max-width: 1200px; margin: 0 auto;
+  padding: 3rem 2rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.media-mentions-heading {
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); text-align: center;
+  margin-bottom: 1.75rem;
+  display: flex; align-items: center; gap: 1rem; justify-content: center;
+}
+.media-mentions-heading::before,
+.media-mentions-heading::after {
+  content: ''; flex: 1; max-width: 80px; height: 1px; background: rgba(255,255,255,0.1);
+}
+.media-mentions-row {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; align-items: center;
+  gap: 0.5rem 1rem;
+}
+.media-mention-pill {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(245,240,234,0.65);
+  text-decoration: none;
+  font-size: 0.82rem; letter-spacing: 0.04em;
+  transition: all 0.22s;
+}
+.media-mention-pill i { font-size: 0.75rem; color: var(--gold); }
+.media-mention-pill:hover {
+  border-color: var(--gold);
+  color: #f5f0ea;
+  background: rgba(201,168,76,0.07);
+}
+
+/* ─── TRAVEL ─── */
+#travel {
+  padding: 7rem 8vw;
+  background: var(--accent-2);
+  position: relative; overflow: hidden;
+}
+#travel::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.25) 0%, transparent 60%);
+}
+.travel-inner {
+  max-width: 900px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.travel-inner .section-label { color: rgba(255,255,255,0.6); }
+.travel-inner .section-label::before { background: rgba(255,255,255,0.4); }
+.travel-inner .section-title { color: white; margin-bottom: 2rem; }
+.travel-text p {
+  font-size: 1.05rem; color: rgba(255,255,255,0.8);
+  line-height: 1.8; margin-bottom: 1.25rem;
+}
+.travel-text p:last-child { margin-bottom: 0; }
+
+/* ─── INSTAGRAM ─── */
+#instagram {
+  padding: 7rem 8vw;
+  background: var(--bg);
+}
+.instagram-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  max-width: 1200px; margin: 0 auto;
+  align-items: start;
+}
+.instagram-handle-card {
+  background: #1a1a1a;
+  padding: 2.5rem;
+  color: white;
+}
+.ig-profile-row {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+}
+.ig-avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--accent), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.5rem; color: white;
+}
+.ig-name { font-size: 1.1rem; font-weight: 500; color: white; }
+.ig-handle { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+.ig-stats {
+  display: flex; gap: 2rem; margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.ig-stat span { display: block; font-size: 1.1rem; font-weight: 500; color: white; }
+.ig-stat small { font-size: 0.72rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+/* Placeholder image grid */
+.ig-tiles {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; margin-bottom: 1.5rem;
+}
+.ig-tile {
+  aspect-ratio: 1;
+  position: relative; overflow: hidden;
+}
+.ig-tile-inner {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
+}
+.ig-tile:nth-child(1) .ig-tile-inner { background: linear-gradient(135deg, rgba(196,92,46,0.5), rgba(201,168,76,0.3)); }
+.ig-tile:nth-child(2) .ig-tile-inner { background: linear-gradient(135deg, rgba(74,124,89,0.5), rgba(196,92,46,0.3)); }
+.ig-tile:nth-child(3) .ig-tile-inner { background: linear-gradient(135deg, rgba(201,168,76,0.5), rgba(74,124,89,0.3)); }
+.ig-tile:nth-child(4) .ig-tile-inner { background: linear-gradient(135deg, rgba(74,124,89,0.3), rgba(201,168,76,0.5)); }
+.ig-tile:nth-child(5) .ig-tile-inner { background: linear-gradient(135deg, rgba(196,92,46,0.3), rgba(74,124,89,0.5)); }
+.ig-tile:nth-child(6) .ig-tile-inner { background: linear-gradient(135deg, rgba(201,168,76,0.4), rgba(196,92,46,0.4)); }
+.ig-tile-inner i { font-size: 1.4rem; color: rgba(255,255,255,0.25); }
+.ig-tile:hover .ig-tile-inner { opacity: 0.7; }
+.ig-niche-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.ig-tag {
+  font-size: 0.72rem; padding: 0.25rem 0.6rem;
+  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5);
+  border-radius: 2px;
+}
+.instagram-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.65rem 1.4rem;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white; text-decoration: none;
+  font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.instagram-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.instagram-right {}
+.instagram-editorial {
+  font-size: 1.05rem; color: var(--text-light);
+  line-height: 1.8; margin-bottom: 2.5rem;
+}
+.social-links {
+  display: flex; flex-wrap: wrap; gap: 1rem;
+  margin-top: 2rem;
+}
+.social-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--text-light); text-decoration: none;
+  border: 1.5px solid var(--border);
+  transition: all 0.2s;
+}
+.social-link:hover {
+  color: var(--accent); border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.social-link i { font-size: 0.95rem; }
+
+/* ─── ADMISSIONS QUICK ACCESS ─── */
+#admissions {
+  padding: 5rem 8vw;
+  background: var(--bg-dark);
+}
+.admissions-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start;
+}
+.admissions-left h2 {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 300; color: #f5f0ea;
+  margin-bottom: 0.75rem;
+}
+.admissions-left p {
+  font-size: 0.9rem; color: rgba(245,240,234,0.5); margin-bottom: 1.75rem; line-height: 1.7;
+}
+.admissions-btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  background: var(--gold);
+  color: var(--bg-dark);
+  text-decoration: none;
+  font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+  transition: all 0.25s;
+}
+.admissions-btn:hover { background: #b8903e; transform: translateY(-2px); }
+.admissions-highlights {
+  margin-bottom: 0;
+}
+.admissions-highlights h4 {
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.highlight-list {
+  list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem;
+}
+.highlight-list li {
+  font-size: 0.88rem; color: rgba(245,240,234,0.65);
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.highlight-list li::before {
+  content: ''; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+}
+.quick-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.quick-link {
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(245,240,234,0.5);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.quick-link:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ─── BLOG ─── */
+#blog {
+  padding: 7rem 8vw;
+  background: var(--bg);
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px; margin: 0 auto 2.5rem;
+}
+.blog-card {
+  background: white;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: all 0.25s;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+}
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+}
+.blog-cover {
+  height: 200px; overflow: hidden;
+}
+.blog-cover-img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.4s;
+}
+.blog-card:hover .blog-cover-img { transform: scale(1.04); }
+.blog-cover-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+.blog-cover-placeholder.travel { background: linear-gradient(135deg, #4a7c59, #2e5440); }
+.blog-cover-placeholder.advocacy { background: linear-gradient(135deg, #c45c2e, #8a3d1e); }
+.blog-cover-placeholder.art { background: linear-gradient(135deg, #c9a84c, #8a6e28); }
+.blog-cover-placeholder i { font-size: 2rem; color: rgba(255,255,255,0.3); }
+.blog-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.blog-cat {
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.5rem;
+}
+.blog-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 600; line-height: 1.3;
+  color: var(--text); margin-bottom: 0.5rem;
+}
+.blog-date { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+.blog-excerpt { font-size: 0.85rem; color: var(--text-light); line-height: 1.65; flex: 1; }
+.view-all {
+  text-align: center;
+  max-width: 1200px; margin: 0 auto;
+}
+.view-all a {
+  font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: gap 0.2s;
+  border-bottom: 1px solid var(--accent); padding-bottom: 2px;
+}
+.view-all a:hover { gap: 0.9rem; }
+
+/* ─── GALLERY ─── */
+#gallery {
+  padding: 7rem 8vw;
+  background: #f3ede5;
+}
+.masonry-grid {
+  column-count: 3; column-gap: 1rem;
+  max-width: 1200px; margin: 0 auto;
+}
+.masonry-item {
+  break-inside: avoid; margin-bottom: 1rem;
+  position: relative; overflow: hidden; cursor: pointer;
+}
+.masonry-item img, .masonry-placeholder {
+  width: 100%; display: block;
+  transition: transform 0.4s;
+}
+.masonry-item:hover img { transform: scale(1.04); }
+.masonry-placeholder {
+  aspect-ratio: 3/2;
+  display: flex; align-items: center; justify-content: center;
+}
+.masonry-placeholder:nth-child(3n+1) { aspect-ratio: 3/4; }
+.masonry-placeholder:nth-child(3n+2) { aspect-ratio: 4/3; }
+.masonry-item-overlay {
+  position: absolute; inset: 0;
+  background: rgba(28,26,23,0.65);
+  display: flex; align-items: flex-end; padding: 1rem;
+  opacity: 0; transition: opacity 0.3s;
+}
+.masonry-item:hover .masonry-item-overlay { opacity: 1; }
+.masonry-item-caption {
+  font-size: 0.75rem; letter-spacing: 0.06em; text-transform: capitalize;
+  color: rgba(255,255,255,0.85);
+}
+.gallery-placeholder-msg {
+  text-align: center; color: var(--text-muted);
+  font-size: 0.9rem; padding: 4rem 0;
+}
+
+/* ─── CONTACT ─── */
+#contact {
+  padding: 7rem 8vw;
+  background: var(--bg-dark);
+}
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; max-width: 1200px; margin: 0 auto;
+  align-items: start;
+}
+.contact-left h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300;
+  color: #f5f0ea; margin-bottom: 1rem; line-height: 1.1;
+}
+.contact-left p {
+  font-size: 1rem; color: rgba(245,240,234,0.55);
+  line-height: 1.75; margin-bottom: 2rem;
+}
+.contact-email {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  font-size: 1rem; color: var(--gold);
+  text-decoration: none; margin-bottom: 2rem;
+  transition: opacity 0.2s;
+}
+.contact-email:hover { opacity: 0.75; }
+.contact-form {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-field {
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.form-field label {
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(245,240,234,0.4);
+}
+.form-field input, .form-field textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #f5f0ea;
+  padding: 0.8rem 1rem;
+  font-family: var(--font-body); font-size: 0.9rem;
+  outline: none; transition: border-color 0.2s;
+  resize: vertical;
+}
+.form-field input:focus, .form-field textarea:focus {
+  border-color: var(--gold);
+}
+.form-field input::placeholder, .form-field textarea::placeholder {
+  color: rgba(245,240,234,0.2);
+}
+.form-submit {
+  align-self: flex-start;
+  /* Hooks to Formspree: <form action="https://formspree.io/f/YOUR_ID" method="POST"> */
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #121009;
+  padding: 4rem 8vw 2rem;
+  position: relative; overflow: hidden;
+}
+.footer-mountain {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  opacity: 0.06;
+}
+.footer-inner {
+  position: relative; z-index: 1;
+  display: flex; flex-wrap: wrap;
+  justify-content: space-between; align-items: flex-end;
+  gap: 2rem; margin-bottom: 2.5rem;
+}
+.footer-left {}
+.footer-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 300;
+  color: rgba(245,240,234,0.9); margin-bottom: 0.3rem;
+}
+.footer-tagline {
+  font-size: 0.82rem; color: rgba(245,240,234,0.3);
+  font-style: italic;
+}
+.footer-socials {
+  display: flex; gap: 1.2rem; align-items: center;
+}
+.footer-social {
+  font-size: 1.1rem; color: rgba(245,240,234,0.3);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-social:hover { color: var(--gold); }
+.footer-bottom {
+  padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.75rem; color: rgba(245,240,234,0.2);
+  text-align: center; position: relative; z-index: 1;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  #hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-visual { display: none; }
+  .hero-content { padding: 8rem 6vw 5rem; text-align: left; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-pull { position: static; }
+  .timeline::before { left: 0; }
+  .timeline-item { grid-template-columns: 1fr; padding-left: 1.5rem; }
+  .timeline-item::before { left: -4px; }
+  .timeline-year { text-align: left; padding-right: 0; padding-left: 0; margin-bottom: 0.5rem; }
+  .instagram-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .admissions-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .masonry-grid { column-count: 2; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .masonry-grid { column-count: 1; }
+  .videos-grid { grid-template-columns: 1fr; }
+  .pubs-grid { grid-template-columns: 1fr; }
+  .hero-cta { flex-direction: column; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Manisha Thapa</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#media">Media</a></li>
+    <li><a href="#travel">Travel</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#work" class="mobile-link">Work</a>
+  <a href="#publications" class="mobile-link">Research</a>
+  <a href="#media" class="mobile-link">Media</a>
+  <a href="#travel" class="mobile-link">Travel</a>
+  <a href="#blog" class="mobile-link">Blog</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Kathmandu, Nepal</div>
+    <h1 class="hero-name">Manisha<br><em>Thapa</em></h1>
+    <div class="hero-roles">
+      <span class="hero-role active">Public Health Practitioner</span>
+      <span class="hero-role">SRHR Activist</span>
+      <span class="hero-role">Solo Traveler</span>
+      <span class="hero-role">Artist</span>
+      <span class="hero-role">Climate Advocate</span>
+    </div>
+    <p class="hero-tagline">Advocating for rights, exploring the world, painting stories — one mountain at a time.</p>
+    <div class="hero-cta">
+      <a href="#about" class="btn btn-primary">Explore My Work</a>
+      <a href="assets/resume.pdf" class="btn btn-outline" target="_blank"><i class="fas fa-download"></i> View Resume</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <!-- Replace with actual photo: <img src="assets/photo.jpg" alt="Manisha Thapa" class="hero-portrait"> -->
+    <div class="hero-portrait-frame">
+      <div class="hero-portrait-placeholder">
+        <i class="fas fa-user"></i>
+        <span>Place photo here</span>
+        <small style="opacity:0.6">assets/photo.jpg</small>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- ═══ PERSPECTIVE ═══ -->
+<section id="perspective">
+  <div class="perspective-inner reveal">
+    <p class="perspective-quote">
+      My work sits at the intersection of <span>public health</span>, lived experience, and storytelling. The focus on sexual and reproductive health and rights is shaped by working closely with communities where access, dignity, and autonomy are still deeply unequal. Through research, advocacy, and creative expression, the aim is to make public health more <span>inclusive, visible, and grounded in real lives</span>.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-pull reveal-left">
+      <div class="section-label">About</div>
+      <blockquote class="pull-quote">"I believe in advocacy that is as bold as the mountains I climb."</blockquote>
+    </div>
+    <div class="about-text reveal-right">
+      <p>
+        Manisha Thapa is a young ecofeminist and licensed public health professional with <strong>5+ years of experience</strong> in sexual and reproductive health and rights (SRHR), menstrual health, gender equality, climate justice, and adolescent health — working primarily in Nepal.
+      </p>
+      <p>
+        She currently serves as <strong>Program Lead at Unity for Change (UFC)</strong> in Kathmandu, where she leads menstrual rights and SRHR advocacy programs, including research on menstrual discrimination among transmen in Nepal. She also serves on the Board of <strong>CliMates Nepal</strong> as Empowerment Director.
+      </p>
+      <p>
+        A <strong>2025 ICFP Youth Trailblazer Awardee</strong> recognized by the International Conference on Family Planning, she has contributed to multiple research publications, led USAID and SAAF-funded programs, represented youth voices across six provinces of Nepal, and participated in international fellowships and conferences across Asia and beyond.
+      </p>
+      <p>
+        She is a certified <strong>Abortion Artist Fellow</strong> (Make In Roads) and a <strong>Women of the South Speak Out (WOSSO) Fellow</strong>. Self-taught in the visual arts, she has performed as a live artist at Ministry of Health events and uses painting and storytelling as tools of advocacy. She is currently applying to <strong>MPH programs at US universities</strong> for Fall 2027.
+      </p>
+    </div>
+    <div class="stat-pills reveal">
+      <span class="pill">5+ Years in Public Health</span>
+      <span class="pill">ICFP Youth Trailblazer 2025</span>
+      <span class="pill">Abortion Artist Fellow</span>
+      <span class="pill">WOSSO Fellow 2024–2026</span>
+      <span class="pill">IAS Conference Scholar 2025</span>
+      <span class="pill">6 Research Publications</span>
+      <span class="pill">US Embassy Youth Council Member</span>
+      <span class="pill">10+ Countries Visited</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills">
+  <div class="awards-header reveal">
+    <div class="section-label">Competencies</div>
+    <h2 class="section-title">Skills &amp; Expertise</h2>
+    <p class="section-intro">Capabilities spanning research, advocacy, and creative practice.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group reveal delay-1">
+      <h4>Public Health &amp; Research</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">SRHR Program Design</span>
+        <span class="skill-tag">Qualitative Research</span>
+        <span class="skill-tag">Quantitative Research</span>
+        <span class="skill-tag">Policy Analysis</span>
+        <span class="skill-tag">Field Data Collection</span>
+        <span class="skill-tag">Report Writing</span>
+        <span class="skill-tag">Monitoring &amp; Evaluation</span>
+      </div>
+    </div>
+    <div class="skill-group reveal delay-2">
+      <h4>Advocacy &amp; Leadership</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Youth Advocacy</span>
+        <span class="skill-tag">Stakeholder Engagement</span>
+        <span class="skill-tag">Community Facilitation</span>
+        <span class="skill-tag">Public Speaking</span>
+        <span class="skill-tag">Volunteer Mobilization</span>
+        <span class="skill-tag">Event Hosting / Emcee</span>
+      </div>
+    </div>
+    <div class="skill-group reveal delay-3">
+      <h4>Communication &amp; Media</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Content Creation (IG/TikTok)</span>
+        <span class="skill-tag">Health Communication</span>
+        <span class="skill-tag">Digital Storytelling</span>
+        <span class="skill-tag">Campaign Development</span>
+        <span class="skill-tag">English–Nepali Translation</span>
+      </div>
+    </div>
+    <div class="skill-group reveal delay-4">
+      <h4>Creative &amp; Artistic</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Visual Art &amp; Painting</span>
+        <span class="skill-tag">Sketching</span>
+        <span class="skill-tag">Narrative Writing</span>
+        <span class="skill-tag">Live Performance Art</span>
+        <span class="skill-tag">Creative Advocacy</span>
+      </div>
+    </div>
+    <div class="skill-group reveal delay-5">
+      <h4>Tools &amp; Technical</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Microsoft Office Suite</span>
+        <span class="skill-tag">Google Workspace</span>
+        <span class="skill-tag">Canva</span>
+        <span class="skill-tag">Project Management</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORK / EXPERIENCE ═══ -->
+<section id="work">
+  <div style="max-width:1200px;margin:0 auto;padding:0 0;">
+    <div class="reveal dark-text">
+      <div class="section-label">Impact &amp; Experience</div>
+      <h2 class="section-title">Selected Work</h2>
+      <p class="work-framing">This portfolio is a curated collection of work across research, advocacy, and storytelling. It highlights not just roles and outputs, but the intent, impact, and learning behind each contribution.</p>
+      <p class="section-intro" style="color:rgba(245,240,234,0.3)">Selected work across research, advocacy, and field engagement.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-year">2025–Present</div>
+        <div class="timeline-body">
+          <div class="timeline-role">Board Member — Empowerment Director</div>
+          <div class="timeline-org">CliMates Nepal, Kathmandu</div>
+          <div class="timeline-desc">Develops and oversees strategic empowerment initiatives for climate advocacy; ensures legal and regulatory compliance of the organization.</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal delay-1">
+        <div class="timeline-year">2020–Present</div>
+        <div class="timeline-body">
+          <div class="timeline-role">Program Lead</div>
+          <div class="timeline-org">Unity for Change (UFC), Lazimpat, Kathmandu</div>
+          <div class="timeline-desc">Leads menstrual rights and SRHR advocacy programs; manages research on menstrual discrimination among transmen in Nepal; coordinates project activities and stakeholder engagement across program cycles.</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal delay-2">
+        <div class="timeline-year">2021–2025</div>
+        <div class="timeline-body">
+          <div class="timeline-role">Program Officer</div>
+          <div class="timeline-org">Visible Impact (VISIM), Basundhara, Kathmandu</div>
+          <div class="timeline-desc">Led USAID PACE Project on youth contraceptive discontinuation; directed four-year SAAF-funded YAAY project training 56 youth champions and 28 media fellows; led the #Youth4GenerationEquality campaign (UNFPA) securing four GoN commitments; managed school-based menstrual health programs.</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal delay-3">
+        <div class="timeline-year">2020–2021</div>
+        <div class="timeline-body">
+          <div class="timeline-role">Outreach &amp; Communications Coordinator</div>
+          <div class="timeline-org">Himalayan Climate Initiative, Budhanilkantha</div>
+          <div class="timeline-desc">Coordinated Green Fellowships with Local Government, supporting 55 fellows and 37 local governments during COVID-19; led social media campaigns and managed partnerships with 15 climate networks.</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal delay-4">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-body">
+          <div class="timeline-role">Reproductive Health &amp; Safe Abortion Rights Fellow</div>
+          <div class="timeline-org">Forum for Women, Law and Development</div>
+          <div class="timeline-desc">Deepened expertise in legal frameworks around reproductive rights; contributed to policy advocacy on abortion decriminalization in Nepal.</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal delay-5">
+        <div class="timeline-year">2021–2022</div>
+        <div class="timeline-body">
+          <div class="timeline-role">Abortion Artist Fellow</div>
+          <div class="timeline-org">Make In Roads — Artists Busting Abortion Stigma Fellowship, USA</div>
+          <div class="timeline-desc">Selected as a fellow for using visual art to challenge abortion stigma; contributed to international network of artists and advocates working at the intersection of art and reproductive rights.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AWARDS ═══ -->
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  HOW TO ADD A NEW AWARD                                      ║
+  ║  Copy one <div class="award-card"> block below and paste     ║
+  ║  it into BOTH the first and second .awards-row divs          ║
+  ║  (the row is duplicated so the loop animation works).        ║
+  ║  Change the icon, title, org, year, and link as needed.      ║
+  ║  Icon options (Font Awesome): fa-trophy, fa-star,            ║
+  ║  fa-graduation-cap, fa-palette, fa-users, fa-globe,          ║
+  ║  fa-newspaper, fa-award, fa-medal, fa-certificate            ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<section id="awards">
+  <div class="awards-header reveal">
+    <div class="section-label">Recognition</div>
+    <h2 class="section-title">Awards &amp; Honours</h2>
+  </div>
+  <div class="awards-marquee-wrap">
+    <div class="awards-track">
+      <!-- ── FIRST COPY (real cards) ── -->
+      <div class="awards-row">
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-trophy"></i></div>
+          <div class="award-title">ICFP Youth Trailblazer Award</div>
+          <div class="award-org"><a href="https://theicfp.org/2025-youth-trailblazers" target="_blank" style="color:inherit;text-decoration:none;">International Conference on Family Planning</a></div>
+          <div class="award-year">2025</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div class="award-title">Bayer Scholar Award</div>
+          <div class="award-org"><a href="https://www.facebook.com/manisha.thapa.708819/posts/1479212163439266/" target="_blank" style="color:inherit;text-decoration:none;">Johns Hopkins University — Summer Institute</a></div>
+          <div class="award-year">2025</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-palette"></i></div>
+          <div class="award-title">Abortion Artist Fellow</div>
+          <div class="award-org"><a href="https://www.makeinroads.org/get-involved/fellowships/past/Manisha" target="_blank" style="color:inherit;text-decoration:none;">Make In Roads — Artists Busting Abortion Stigma</a></div>
+          <div class="award-year">2021–2022</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-users"></i></div>
+          <div class="award-title">WOSSO Fellow</div>
+          <div class="award-org"><a href="https://wosso.org/manisha-thapa/" target="_blank" style="color:inherit;text-decoration:none;">Women of the South Speak Out, ARROW/GenderLinks</a></div>
+          <div class="award-year">2024–2026</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-star"></i></div>
+          <div class="award-title">Dean's List Certification</div>
+          <div class="award-org">Faculty of Health Sciences, Pokhara University</div>
+          <div class="award-year">2022</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <div class="award-title">Solo Traveler Award — Top 5 Female</div>
+          <div class="award-org">Solo Female Travel Recognition</div>
+          <div class="award-year">2024</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-globe"></i></div>
+          <div class="award-title">US Embassy Youth Council Member</div>
+          <div class="award-org"><a href="https://www.instagram.com/p/C3sGfJ7ybdI/" target="_blank" style="color:inherit;text-decoration:none;">United States Embassy Youth Council Nepal (USYC)</a></div>
+          <div class="award-year">2023</div>
+        </div>
+      </div>
+      <!-- ── SECOND COPY (duplicate for seamless loop) ── -->
+      <div class="awards-row" aria-hidden="true">
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-trophy"></i></div>
+          <div class="award-title">ICFP Youth Trailblazer Award</div>
+          <div class="award-org">International Conference on Family Planning</div>
+          <div class="award-year">2025</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div class="award-title">Bayer Scholar Award</div>
+          <div class="award-org">Johns Hopkins University — Summer Institute</div>
+          <div class="award-year">2025</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-palette"></i></div>
+          <div class="award-title">Abortion Artist Fellow</div>
+          <div class="award-org">Make In Roads — Artists Busting Abortion Stigma</div>
+          <div class="award-year">2021–2022</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-users"></i></div>
+          <div class="award-title">WOSSO Fellow</div>
+          <div class="award-org">Women of the South Speak Out, ARROW/GenderLinks</div>
+          <div class="award-year">2024–2026</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-star"></i></div>
+          <div class="award-title">Dean's List Certification</div>
+          <div class="award-org">Faculty of Health Sciences, Pokhara University</div>
+          <div class="award-year">2022</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <div class="award-title">Solo Traveler Award — Top 5 Female</div>
+          <div class="award-org">Solo Female Travel Recognition</div>
+          <div class="award-year">2024</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-globe"></i></div>
+          <div class="award-title">US Embassy Youth Council Member</div>
+          <div class="award-org">United States Embassy Youth Council Nepal (USYC)</div>
+          <div class="award-year">2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PUBLICATIONS ═══ -->
+<section id="publications">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-label">Research</div>
+      <h2 class="section-title">Publications &amp; Research</h2>
+      <p class="section-intro">Contributions across research, policy, and advocacy writing.</p>
+    </div>
+    <div class="pubs-grid">
+      <div class="pub-card reveal delay-1">
+        <span class="pub-badge">Research</span>
+        <h4>Menstrual Health Friendliness of Selected Schools in Kathmandu Valley</h4>
+        <div class="pub-meta">VISIM · 2026</div>
+        <p class="pub-desc">Comprehensive assessment of menstrual health infrastructure and practices in Kathmandu Valley schools, examining gaps in access and dignity for students.</p>
+        <a href="https://visim.org/wp-content/uploads/2026/03/MHFS-Final-Report_Visible-Impact-1.pdf" target="_blank" class="pub-link">Read Report <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="pub-card reveal delay-2">
+        <span class="pub-badge">Research</span>
+        <h4>Contraceptive Discontinuation Among Youth</h4>
+        <div class="pub-meta">VISIM / Nepal PRB · 2026</div>
+        <p class="pub-desc">IEC publication examining patterns and drivers of contraceptive discontinuation among young people in Nepal, developed under the USAID-funded PACE Project.</p>
+        <a href="https://visim.org/wp-content/uploads/2026/04/publication_Nepali-PRB-IEC.pdf" target="_blank" class="pub-link">Read Publication <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="pub-card reveal delay-3">
+        <span class="pub-badge policy">Policy Brief</span>
+        <h4>High-Level Dialogue Summary Paper — APFSD Youth Forum</h4>
+        <div class="pub-meta">Nepal APFSD Youth Alliance (NAYA) · 2021</div>
+        <p class="pub-desc">Key recommendations on SRHR, gender equality, and climate action from regional SDG review mechanisms and commitments from Government of Nepal officials.</p>
+        <a href="https://visim.org/wp-content/uploads/2026/03/High-level-Dialogue-summary-paper-call-to-action_English.pdf" target="_blank" class="pub-link">Read Brief <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="pub-card reveal delay-1">
+        <span class="pub-badge policy">Policy Document</span>
+        <h4>Youth Consultation for FP2030 — Issues &amp; Recommendations</h4>
+        <div class="pub-meta">VISIM / YouAccess · 2021</div>
+        <p class="pub-desc">Issues and recommendations from youth consultations across six provinces of Nepal on family planning access and youth-friendly services.</p>
+        <a href="https://visim.org/wp-content/uploads/2026/03/Youth-Consultation-for-FP-2030.pdf" target="_blank" class="pub-link">Read Document <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="pub-card reveal delay-2">
+        <span class="pub-badge">Research</span>
+        <h4>Menstrual Discrimination Among Transmen in Nepal</h4>
+        <div class="pub-meta">Unity for Change / Dignified Menstruation</div>
+        <p class="pub-desc">An examination of menstrual discrimination faced by transmen in Nepal, contributing to a more inclusive understanding of menstrual health and rights.</p>
+        <a href="https://www.dignifiedmenstruation.org/detail/227/menstrual-discrimination-among-transmen-in-nepal" target="_blank" class="pub-link">Read Article <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="pub-card reveal delay-3">
+        <span class="pub-badge blog">Blog</span>
+        <h4>Empowering Young Advocates for Safe Abortion in Nepal</h4>
+        <div class="pub-meta">Safe Abortion Action Fund (SAAF)</div>
+        <p class="pub-desc">A reflection on youth-led advocacy work for safe abortion access in Nepal, published on the SAAF platform as part of the YAAY project.</p>
+        <a href="https://saafund.org/empowering-young-advocates-for-safe-abortion-in-nepal/" target="_blank" class="pub-link">Read Blog <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MEDIA / TALKS ═══ -->
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  HOW TO ADD A NEW VIDEO                                      ║
+  ║  1. Copy a <div class="video-card"> block below              ║
+  ║  2. Replace the YouTube embed URL:                           ║
+  ║     https://www.youtube.com/embed/VIDEO_ID_HERE              ║
+  ║     (get VIDEO_ID from youtube.com/watch?v=VIDEO_ID)         ║
+  ║  3. Update the title and description text                    ║
+  ║  4. The grid auto-adjusts:                                   ║
+  ║     3 videos → 3 cols, 4 → 2×2, 5 → 3+2, 6 → 3×2           ║
+  ║     The JS below counts videos and sets --video-cols         ║
+  ║                                                              ║
+  ║  FOR INSTAGRAM REELS: Use class="video-wrapper portrait"     ║
+  ║  for a 9:16 tall video embed (looks better for vertical       ║
+  ║  content). Normal YouTube uses class="video-wrapper"         ║
+  ╚══════════════════════════════════════════════════════════════╝
+  
+  HOW TO UPDATE "AS SEEN IN":
+  Add a new <a> tag inside .media-mentions-row with class="media-mention-pill"
+  and an appropriate Font Awesome icon. Example:
+  <a href="URL" target="_blank" class="media-mention-pill">
+    <i class="fas fa-newspaper"></i> Publication Name
+  </a>
+-->
+<section id="media">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal dark-text">
+      <div class="section-label">In Conversation</div>
+      <h2 class="section-title">Talks &amp; Media</h2>
+      <p class="section-intro media-intro">Conversations, panels, and public-facing work.</p>
+    </div>
+    <div class="videos-grid" id="videos-grid">
+      <!-- VIDEO 1 -->
+      <div class="video-card reveal delay-1">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/k8LfXrMffXM" title="Climate, Rights & Resilience" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-title">Climate, Rights &amp; Resilience — Adolescents and Youth Leading Change</div>
+          <div class="video-desc">Youth-led climate and SRHR advocacy, and the intersections of climate justice and reproductive rights.</div>
+        </div>
+      </div>
+      <!-- VIDEO 2 -->
+      <div class="video-card reveal delay-2">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/pYJvx4ESXmw" title="Web's Most Searched Question on Abortion" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-title">Web's Most Searched Question on Abortion</div>
+          <div class="video-desc">Breaking abortion stigma through direct, evidence-based answers to the internet's most asked questions.</div>
+        </div>
+      </div>
+      <!-- VIDEO 3 -->
+      <div class="video-card reveal delay-3">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/FFnsHAqtQU0" title="Inclusive SRHR" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-title">Inclusive SRHR: Bridging Gaps for Diverse Communities</div>
+          <div class="video-desc">A panel discussion on making sexual and reproductive health services accessible for marginalized communities.</div>
+        </div>
+      </div>
+      <!-- VIDEO 4 -->
+      <div class="video-card reveal delay-1">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/AyOZnRygzU0" title="Podcast" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-title">Podcast: SRHR, Advocacy &amp; Youth Leadership</div>
+          <div class="video-desc">A conversation on youth-led advocacy, sexual and reproductive health rights, and building movements from the ground up.</div>
+        </div>
+      </div>
+      <!-- VIDEO 5 -->
+      <div class="video-card reveal delay-2">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/47IM6jBfYsQ" title="ICFP 2025 Youth Trailblazer Award" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-title">ICFP 2025 Youth Trailblazer Award Winner</div>
+          <div class="video-desc">Recognition of Manisha Thapa at the International Conference on Family Planning 2025 as a Youth Trailblazer.</div>
+        </div>
+      </div>
+      <!-- ADD MORE VIDEOS HERE — copy a video-card block above -->
+    </div>
+
+    <!-- ── AS SEEN IN ── -->
+    <div class="media-mentions-section reveal">
+      <div class="media-mentions-heading">Featured &amp; Mentioned In</div>
+      <div class="media-mentions-row">
+        <a href="https://kathmandupost.com/art-culture/2024/11/20/what-i-watch-online-manisha-thapa" target="_blank" class="media-mention-pill">
+          <i class="fas fa-newspaper"></i> Kathmandu Post
+        </a>
+        <a href="https://theicfp.org/2025-youth-trailblazers" target="_blank" class="media-mention-pill">
+          <i class="fas fa-award"></i> ICFP 2025
+        </a>
+        <a href="https://www.makeinroads.org/get-involved/fellowships/past/Manisha" target="_blank" class="media-mention-pill">
+          <i class="fas fa-palette"></i> Make In Roads
+        </a>
+        <a href="https://wosso.org/manisha-thapa/" target="_blank" class="media-mention-pill">
+          <i class="fas fa-users"></i> WOSSO
+        </a>
+        <a href="https://saafund.org/empowering-young-advocates-for-safe-abortion-in-nepal/" target="_blank" class="media-mention-pill">
+          <i class="fas fa-heart"></i> SAAF
+        </a>
+        <a href="https://visim.org" target="_blank" class="media-mention-pill">
+          <i class="fas fa-flask"></i> VISIM
+        </a>
+        <!-- ADD NEW MEDIA MENTIONS HERE — copy an <a> tag above -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRAVEL ═══ -->
+<section id="travel">
+  <div class="travel-inner">
+    <div class="section-label reveal">Travel &amp; Storytelling</div>
+    <h2 class="section-title reveal">Movement as a way of understanding people and place.</h2>
+    <div class="travel-text">
+      <p class="reveal delay-1">
+        Manisha is a solo traveler who has explored diverse landscapes across Nepal and beyond — trekking through remote mountain regions, attending international conferences across Asia and Africa, and immersing herself in cultures that deepen her understanding of the communities she advocates for. Her travel is rooted in curiosity, sustainability, and reflection rather than tourism alone.
+      </p>
+      <p class="reveal delay-2">
+        Through travel and participation in international fellowships and conferences in Sri Lanka, Thailand, Rwanda, Colombia, and beyond, she connects local realities with global public health conversations. Her storytelling through visuals, writing, and digital platforms brings together personal experience and broader social narratives — making the political personal and the personal political.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INSTAGRAM ═══ -->
+<section id="instagram">
+  <div class="awards-header reveal">
+    <div class="section-label">Social &amp; Content</div>
+    <h2 class="section-title">@thapamanishaa</h2>
+  </div>
+  <!-- To embed live Instagram feed, use a third-party widget like Snapwidget or Behold.so and replace this section with their embed code -->
+  <div class="instagram-grid" style="max-width:1200px;margin:0 auto;">
+    <div class="instagram-handle-card reveal-left">
+      <div class="ig-profile-row">
+        <div class="ig-avatar">M</div>
+        <div>
+          <div class="ig-name">Manisha Thapa</div>
+          <div class="ig-handle">@thapamanishaa</div>
+        </div>
+      </div>
+      <div class="ig-stats">
+        <div class="ig-stat"><span>10K+</span><small>Followers</small></div>
+        <div class="ig-stat"><span>SRHR</span><small>Advocacy</small></div>
+        <div class="ig-stat"><span>Nepal</span><small>Based</small></div>
+      </div>
+      <div class="ig-tiles">
+        <div class="ig-tile"><div class="ig-tile-inner"><i class="fas fa-mountain"></i></div></div>
+        <div class="ig-tile"><div class="ig-tile-inner"><i class="fas fa-heart"></i></div></div>
+        <div class="ig-tile"><div class="ig-tile-inner"><i class="fas fa-palette"></i></div></div>
+        <div class="ig-tile"><div class="ig-tile-inner"><i class="fas fa-globe-asia"></i></div></div>
+        <div class="ig-tile"><div class="ig-tile-inner"><i class="fas fa-seedling"></i></div></div>
+        <div class="ig-tile"><div class="ig-tile-inner"><i class="fas fa-camera"></i></div></div>
+      </div>
+      <div class="ig-niche-tags">
+        <span class="ig-tag">#SustainableTravel</span>
+        <span class="ig-tag">#SoloFemaleTravel</span>
+        <span class="ig-tag">#SRHR</span>
+        <span class="ig-tag">#PublicHealth</span>
+        <span class="ig-tag">#NepalMountains</span>
+      </div>
+      <a href="https://www.instagram.com/thapamanishaa/" target="_blank" class="instagram-btn">
+        <i class="fab fa-instagram"></i> Follow on Instagram
+      </a>
+    </div>
+    <div class="instagram-right reveal-right">
+      <div class="section-label">Content Creation</div>
+      <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:300;margin-bottom:1.25rem;line-height:1.3;color:var(--text)">Where the personal and the political converge.</h3>
+      <p class="instagram-editorial">
+        Manisha documents the world through a sustainable, feminist lens — solo treks through the Himalayas, culture deep-dives, and honest dispatches from the frontlines of global health conferences. Her digital presence reflects work at the intersection of travel, identity, and advocacy. She shares stories of solo travel, sustainable living, and public health awareness, combining personal narrative with social impact. Her Instagram bridges the geographic and ideological, inviting followers into both landscapes.
+      </p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/thapamanishaa/" target="_blank" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://www.tiktok.com/@_thapamanishaa" target="_blank" class="social-link"><i class="fab fa-tiktok"></i> TikTok</a>
+        <a href="https://www.facebook.com/manisha.thapa.708819/" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <a href="https://np.linkedin.com/in/manisha-thapa-945635301" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+        <a href="https://www.youtube.com/@ManishaThapaSRHR" target="_blank" class="social-link"><i class="fab fa-youtube"></i> YouTube</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ADMISSIONS QUICK ACCESS ═══ -->
+<section id="admissions">
+  <div class="admissions-inner">
+    <div class="admissions-left reveal-left dark-text">
+      <div class="section-label" style="color:var(--gold)">For Reviewers</div>
+      <h2>For Admissions Committees &amp; Collaborators</h2>
+      <p>A quick reference for those reviewing Manisha's profile for graduate admissions, partnerships, or fellowship opportunities.</p>
+      <a href="assets/resume.pdf" target="_blank" class="admissions-btn"><i class="fas fa-download"></i> Download Resume / CV</a>
+    </div>
+    <div class="admissions-highlights reveal-right">
+      <h4>Key Highlights</h4>
+      <ul class="highlight-list">
+        <li>5+ years in public health program management and advocacy</li>
+        <li>ICFP Youth Trailblazer Awardee 2025</li>
+        <li>6+ research and policy publications</li>
+        <li>International fellowships: IAS 2025, WOSSO 2024–2026, Make In Roads 2021–2022</li>
+        <li>Led USAID and SAAF-funded multi-year programs</li>
+        <li>MPH applicant — Fall 2027 intake</li>
+      </ul>
+      <h4 style="margin-top:1.5rem;">Quick Links</h4>
+      <div class="quick-links">
+        <a href="#publications" class="quick-link">Research &amp; Publications</a>
+        <a href="#media" class="quick-link">Media &amp; Talks</a>
+        <a href="#awards" class="quick-link">Awards</a>
+        <a href="#contact" class="quick-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BLOG ═══ -->
+<section id="blog">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-label">Field Notes &amp; Stories</div>
+      <h2 class="section-title">Writing</h2>
+      <p class="section-intro">Reflections from the field, the trail, and the studio.</p>
+    </div>
+    <div class="blog-grid" id="blog-grid">
+      <!-- Loaded by JS from blogs/index.json -->
+    </div>
+    <div class="view-all reveal">
+      <a href="blogs/index.html">View All Posts <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section id="gallery">
+  <div style="max-width:1200px;margin:0 auto;margin-bottom:3rem;">
+    <div class="reveal">
+      <div class="section-label">Visual</div>
+      <h2 class="section-title">Through My Lens</h2>
+      <!-- <p class="section-intro">To add photos: upload images to the <code>gallery/</code> folder and add filenames to <code>gallery/index.json</code>.</p> -->
+      <p class="section-intro">THE VASTNESS OF MOTHER NATURE CAN NEVER BE PRAISED ENOUGH.</p>
+    </div>
+  </div>
+  <div class="masonry-grid" id="gallery-grid">
+    <!-- Loaded by JS from gallery/index.json -->
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-left reveal-left dark-text">
+      <div class="section-label" style="color:var(--gold)">Get in Touch</div>
+      <h2>Let's<br>Connect</h2>
+      <p>Whether it's collaboration on public health projects, media inquiries, travel stories, or just a good conversation — the inbox is open.</p>
+      <a href="mailto:email@gmail.com" class="contact-email">
+        <i class="fas fa-envelope"></i> email@gmail.com
+      </a>
+      <div class="social-links" style="flex-wrap:wrap;gap:0.75rem;">
+        <a href="https://www.instagram.com/thapamanishaa/" target="_blank" class="social-link" style="border-color:rgba(255,255,255,0.1);color:rgba(245,240,234,0.5)"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@_thapamanishaa" target="_blank" class="social-link" style="border-color:rgba(255,255,255,0.1);color:rgba(245,240,234,0.5)"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/manisha.thapa.708819/" target="_blank" class="social-link" style="border-color:rgba(255,255,255,0.1);color:rgba(245,240,234,0.5)"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://np.linkedin.com/in/manisha-thapa-945635301" target="_blank" class="social-link" style="border-color:rgba(255,255,255,0.1);color:rgba(245,240,234,0.5)"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <!-- Hook to Formspree: replace action with https://formspree.io/f/YOUR_FORM_ID -->
+      <form class="contact-form" action="#" method="POST">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name">
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Collaboration, media inquiry, hello...">
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="What's on your mind?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Send Message <i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <!-- Mountain SVG background -->
+  <svg class="footer-mountain" viewBox="0 0 1440 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <polygon points="0,200 120,100 240,150 380,60 520,130 640,40 760,110 900,20 1020,90 1140,50 1260,120 1440,30 1440,200" fill="#c45c2e"/>
+    <polygon points="0,200 160,120 300,170 460,80 580,140 700,60 840,130 960,50 1080,110 1200,70 1340,140 1440,80 1440,200" fill="#4a7c59" opacity="0.6"/>
+  </svg>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-name">Manisha Thapa</div>
+      <div class="footer-tagline">Advocating for rights, exploring the world, painting stories.</div>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/thapamanishaa/" target="_blank" class="footer-social"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@_thapamanishaa" target="_blank" class="footer-social"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.facebook.com/manisha.thapa.708819/" target="_blank" class="footer-social"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://np.linkedin.com/in/manisha-thapa-945635301" target="_blank" class="footer-social"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; <span id="footer-year"></span> Manisha Thapa · Kathmandu, Nepal
+  </div>
+</footer>
+
+<script>
+// ─── FOOTER YEAR
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+// ─── NAV: dark bg on dark sections, active link highlighting
+const darkSections = ['work','media','admissions','contact'];
+const navEl = document.getElementById('main-nav');
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+function updateNav() {
+  let current = '';
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if (top <= 80) current = sec.id;
+  });
+  const isDark = darkSections.includes(current);
+  navEl.classList.toggle('dark-bg', isDark);
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href').replace('#','');
+    link.classList.toggle('active', href === current);
+  });
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
+
+// ─── HAMBURGER
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// ─── HERO ROLE CYCLING
+const roles = document.querySelectorAll('.hero-role');
+let currentRole = 0;
+setInterval(() => {
+  roles[currentRole].classList.remove('active');
+  currentRole = (currentRole + 1) % roles.length;
+  roles[currentRole].classList.add('active');
+}, 2400);
+
+// ─── INTERSECTION OBSERVER — scroll reveals
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// ─── BLOG: load from blogs/index.json
+const categoryIcons = { Travel: 'fa-mountain', Advocacy: 'fa-fist-raised', Art: 'fa-palette', Research: 'fa-flask', Reflection: 'fa-pen' };
+const categoryClasses = { Travel: 'travel', Advocacy: 'advocacy', Art: 'art', Research: 'advocacy', Reflection: 'travel' };
+
+function renderBlogCards(posts) {
+  const grid = document.getElementById('blog-grid');
+  const latest = posts.slice(0, 3);
+  grid.innerHTML = latest.map((post, i) => {
+    const cat = post.category || 'Travel';
+    const cls = categoryClasses[cat] || 'travel';
+    const icon = categoryIcons[cat] || 'fa-pen';
+    const dateStr = post.date ? new Date(post.date).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) : '';
+    return `
+    <a href="blogs/${post.slug}.html" class="blog-card reveal delay-${i+1}">
+      <div class="blog-cover">
+        ${post.cover
+          ? `<img src="${post.cover}" alt="${post.title}" class="blog-cover-img" onerror="this.parentElement.innerHTML='<div class=\\"blog-cover-placeholder ${cls}\\"><i class=\\"fas ${icon}\\"></i></div>'">`
+          : `<div class="blog-cover-placeholder ${cls}"><i class="fas ${icon}"></i></div>`
+        }
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">${cat}</div>
+        <div class="blog-title">${post.title}</div>
+        <div class="blog-date">${dateStr}</div>
+        <div class="blog-excerpt">${post.excerpt}</div>
+      </div>
+    </a>`;
+  }).join('');
+  // re-observe newly created elements
+  grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+fetch('blogs/index.json')
+  .then(r => r.json())
+  .then(posts => {
+    const sorted = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    renderBlogCards(sorted);
+  })
+  .catch(() => {
+    // fallback placeholder cards
+    renderBlogCards([
+      { slug: '#', title: 'Finding Silence in Langtang', date: '2025-11-08', category: 'Travel', excerpt: 'Three days above 4,000m with no phone signal and everything to think about.' },
+      { slug: '#', title: 'What My Paintings Said That My Words Couldn\'t', date: '2025-09-14', category: 'Advocacy', excerpt: 'I picked up a brush to say things I couldn\'t say in policy meetings.' },
+      { slug: '#', title: 'On Mountains, Menstruation, and What We Don\'t Talk About', date: '2025-07-22', category: 'Art', excerpt: 'A reflection on trekking culture, body autonomy, and why I started painting menstrual blood on canvas.' }
+    ]);
+  });
+
+// ─── GALLERY: load from gallery/index.json
+const palettePlaceholders = [
+  'linear-gradient(135deg, #c45c2e, #d4866a)',
+  'linear-gradient(135deg, #4a7c59, #6da082)',
+  'linear-gradient(135deg, #c9a84c, #dbbf7a)',
+  'linear-gradient(135deg, #2e2a25, #4a4540)',
+  'linear-gradient(135deg, #c45c2e, #4a7c59)',
+  'linear-gradient(135deg, #c9a84c, #c45c2e)',
+  'linear-gradient(135deg, #4a7c59, #2e2a25)',
+  'linear-gradient(135deg, #d4866a, #c9a84c)',
+  'linear-gradient(135deg, #6da082, #c45c2e)',
+];
+
+function renderGallery(filenames) {
+  const grid = document.getElementById('gallery-grid');
+  if (!filenames || filenames.length === 0) {
+    grid.innerHTML = '<p class="gallery-placeholder-msg">Photos coming soon. Add images to the <code>gallery/</code> folder and update <code>gallery/index.json</code>.</p>';
+    return;
+  }
+  grid.innerHTML = filenames.map((filename, i) => {
+    const caption = filename.replace(/\.[^.]+$/, '').replace(/-/g, ' ');
+    return `
+    <div class="masonry-item">
+      <img src="gallery/${filename}" alt="${caption}" loading="lazy"
+        onerror="this.outerHTML='<div class=\\"masonry-placeholder\\" style=\\"background:${palettePlaceholders[i % palettePlaceholders.length]}\\"></div>'">
+      <div class="masonry-item-overlay">
+        <span class="masonry-item-caption">${caption}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+fetch('gallery/index.json')
+  .then(r => r.json())
+  .then(renderGallery)
+  .catch(() => {
+    document.getElementById('gallery-grid').innerHTML = '<p class="gallery-placeholder-msg">Photos coming soon. Add images to the <code>gallery/</code> folder and update <code>gallery/index.json</code>.</p>';
+  });
+
+// ─── PARALLAX on hero (subtle)
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) heroBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+}, { passive: true });
+
+// ─── SMART VIDEO GRID: set column count based on number of videos
+(function() {
+  const grid = document.getElementById('videos-grid');
+  if (!grid) return;
+  const count = grid.querySelectorAll('.video-card').length;
+  let cols;
+  if      (count <= 1) cols = 1;
+  else if (count <= 3) cols = count;
+  else if (count === 4) cols = 2;
+  else if (count <= 6) cols = 3;
+  else cols = 4;
+  grid.style.setProperty('--video-cols', cols);
+  // On mobile override handled by CSS media queries
+})();
+</script>
+</body>
+</html>
