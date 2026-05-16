@@ -445,7 +445,8 @@ h1.hero-name em {
 }
 
 /* Hero visual side */
-.hero-right { position: relative; height: min(72vh, 620px); opacity: 0; animation: rise 1.1s var(--ease) 0.3s forwards; }
+/* Hero visual side */
+.hero-right { position: relative; aspect-ratio: 4/5; max-height: min(80vh, 680px); opacity: 0; animation: rise 1.1s var(--ease) 0.3s forwards; }
 .hero-portrait {
   position: absolute; inset: 0;
   border-radius: var(--r-xl);
@@ -562,6 +563,26 @@ h1.hero-name em {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(4px); }
 }
+
+/*I ADDED MANUALLY FOR THE ABOUT IMAGE*/
+
+/*.hero-portrait {*/
+/*  background-size: cover;*/
+/*  background-position: center;*/
+/*  background-repeat: no-repeat;*/
+/*}*/
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+
 
 /* ═══════════════════════════════════════════════════════════════
    PERSPECTIVE (dark band)
@@ -951,6 +972,32 @@ h1.hero-name em {
   .tl-node { left: 18px; top: 2rem; }
   .tl-item.left .tl-card::after,
   .tl-item.right .tl-card::after { left: -24px; right: auto; width: 24px; }
+}
+
+
+/*ADDED THE FOLLOWING MANUALLY TO REMOVE THE TILES/BORDERS ON THE EXPERIENCES*/
+
+/* Removes borders and backgrounds only within the Work section */
+#work .tl-card {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+/* Reduces the vertical gap between items only within the Work section */
+#work .tl-item {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+/* Removes extra space from the spacers used in this section */
+#work .tl-spacer {
+    height: 0 !important;
+    margin: 0 !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -2240,7 +2287,7 @@ footer {
     <div class="hero-left">
       <div class="hero-tag-row">
         <div class="hero-dot"></div>
-        <span class="hero-available">Kathmandu · Open to MPH Fall 2027</span>
+        <span class="hero-available">Kathmandu, Nepal</span>
       </div>
 
       <h1 class="hero-name">
@@ -2266,20 +2313,29 @@ footer {
 
     <div class="hero-right">
       <div class="hero-chip c1"><i class="fas fa-trophy"></i> ICFP Trailblazer '25</div>
-      <div class="hero-chip c2"><i class="fas fa-mountain"></i> 10+ countries</div>
+      <!--<div class="hero-chip c2"><i class="fas fa-mountain"></i> 5+ countries</div>-->
       <div class="hero-chip c3"><i class="fas fa-palette"></i> Artist Fellow</div>
 
       <div class="hero-portrait">
         <div class="hero-portrait-inner">
-          <div class="hero-portrait-label"><i class="far fa-image"></i> Place photo at assets/photo.jpg</div>
+          <img src="img/manu.jpg" alt="Manisha Thapa" class="hero-img">
         </div>
       </div>
+      
+      
+      <!--A TRIAL I ADDED MANUALLY FOR ABOUT IMAGE-->
+      
+<!--<div class="hero-portrait">-->
+<!--  <div class="hero-portrait-inner">-->
+<!--    <img src="img/about.jpg" alt="About Me" class="hero-img">-->
+<!--  </div>-->
+<!--</div>-->
 
       <div class="currently">
         <div class="currently-head"><span class="pulse-g"></span> Currently</div>
         <div class="currently-lines">
-          <div class="currently-line"><span class="label">Work</span><span><strong>Program Lead</strong> at Unity for Change</span></div>
-          <div class="currently-line"><span class="label">Study</span><span>Applying to <strong>US MPH programs</strong>, Fall 2027</span></div>
+          <div class="currently-line"><span class="label">Work</span><span><strong>Program Manager</strong> at Unity for Change</span></div>
+          <!--<div class="currently-line"><span class="label">Study</span><span>Applying to <strong>US MPH programs</strong>, Fall 2027</span></div>-->
           <div class="currently-line"><span class="label">Recent</span><span>Bayer Scholar Award, <strong>Johns Hopkins</strong> 2025</span></div>
         </div>
       </div>
@@ -2315,7 +2371,7 @@ footer {
         Manisha Thapa is a young ecofeminist and licensed public health professional with <strong>5+ years of experience</strong> in sexual and reproductive health and rights (SRHR), menstrual health, gender equality, climate justice, and adolescent health — working primarily in Nepal.
       </p>
       <p>
-        She currently serves as <strong>Program Lead at Unity for Change (UFC)</strong> in Kathmandu, where she leads menstrual rights and SRHR advocacy programs, including research on menstrual discrimination among transmen in Nepal. She also serves on the Board of <strong>CliMates Nepal</strong> as Empowerment Director.
+        She currently serves as <strong>Program Manager at Unity for Change (UFC)</strong> in Kathmandu, where she leads menstrual rights and SRHR advocacy programs, including research on menstrual discrimination among transmen in Nepal. She also serves on the Board of <strong>CliMates Nepal</strong> as Empowerment Director.
       </p>
       <p>
         A <strong>2025 ICFP Youth Trailblazer Awardee</strong> recognized by the International Conference on Family Planning, she has contributed to multiple research publications, led USAID and SAAF-funded programs, represented youth voices across six provinces of Nepal, and participated in international fellowships and conferences across Asia and beyond.
@@ -2331,7 +2387,7 @@ footer {
         <span class="pill"><i class="fas fa-globe"></i> IAS Conference Scholar 2025</span>
         <span class="pill"><i class="fas fa-book"></i> 6 Research Publications</span>
         <span class="pill"><i class="fas fa-flag"></i> US Embassy Youth Council Member</span>
-        <span class="pill"><i class="fas fa-plane"></i> 10+ Countries Visited</span>
+        <!--<span class="pill"><i class="fas fa-plane"></i> 5+ Countries Visited</span>-->
       </div>
     </div>
   </div>
@@ -2432,7 +2488,7 @@ footer {
       <div class="tl-spacer"></div>
       <div class="tl-card">
         <div class="tl-year">2020 — Present</div>
-        <h3 class="tl-role">Program Lead</h3>
+        <h3 class="tl-role">Program Manager</h3>
         <div class="tl-org">Unity for Change (UFC) · Lazimpat, Kathmandu</div>
         <p class="tl-desc">Leads menstrual rights and SRHR advocacy programs; manages research on menstrual discrimination among transmen in Nepal; coordinates project activities and stakeholder engagement across program cycles.</p>
         <div class="tl-tags"><span class="tl-tag">SRHR</span><span class="tl-tag">Menstrual Health</span><span class="tl-tag">Program Mgmt</span></div>
@@ -2666,9 +2722,10 @@ footer {
   </div>
 </div>
 
+
 <div class="video-card reveal d1">
   <div class="video-wrapper" data-embed="https://www.youtube.com/embed/pYJvx4ESXmw?autoplay=1&rel=0" data-source="YouTube">
-    <img class="video-thumb" src="https://img.youtube.com/vi/pYJvx4ESXmw/maxresdefault.jpg" alt="Web's Most Searched Question on Abortion" loading="lazy"
+    <img class="video-thumb" src="https://www.youtube.com/embed/pYJvx4ESXmw.jpg" alt="Web's Most Searched Question on Abortion" loading="lazy" 
          onerror="this.src='https://img.youtube.com/vi/pYJvx4ESXmw/hqdefault.jpg'">
     <div class="video-source-badge"><i class="fab fa-youtube"></i> &nbsp; YouTube</div>
     <button class="video-play" aria-label="Play"><i class="fas fa-play"></i></button>
@@ -2678,6 +2735,19 @@ footer {
     <div class="video-desc">Breaking abortion stigma through direct, evidence-based answers to the internet's most asked questions.</div>
   </div>
 </div>
+
+<!--<div class="video-card reveal d1">-->
+<!--  <div class="video-wrapper" data-embed="https://www.youtube.com/embed/pYJvx4ESXmw?autoplay=1&rel=0" data-source="YouTube">-->
+<!--    <img class="video-thumb" src="https://img.youtube.com/vi/pYJvx4ESXmw/maxresdefault.jpg" alt="Web's Most Searched Question on Abortion" loading="lazy"-->
+<!--         onerror="this.src='https://img.youtube.com/vi/pYJvx4ESXmw/hqdefault.jpg'">-->
+<!--    <div class="video-source-badge"><i class="fab fa-youtube"></i> &nbsp; YouTube</div>-->
+<!--    <button class="video-play" aria-label="Play"><i class="fas fa-play"></i></button>-->
+<!--  </div>-->
+<!--  <div class="video-info">-->
+<!--    <div class="video-title">Web's Most Searched Question on Abortion</div>-->
+<!--    <div class="video-desc">Breaking abortion stigma through direct, evidence-based answers to the internet's most asked questions.</div>-->
+<!--  </div>-->
+<!--</div>-->
 
 <div class="video-card reveal d2">
   <div class="video-wrapper" data-embed="https://www.youtube.com/embed/FFnsHAqtQU0?autoplay=1&rel=0" data-source="YouTube">
@@ -2718,10 +2788,13 @@ footer {
   </div>
 </div>
 
+
+
+
 <div class="video-card reveal d5">
   <div class="video-wrapper" data-embed="https://www.youtube.com/embed/X-uTi7gl_go?autoplay=1&rel=0" data-source="YouTube">
-    <img class="video-thumb" src="https://img.youtube.com/vi/X-uTi7gl_go/maxresdefault.jpg" alt="Missed Voices: Youth on the Frontlines of SRHR" loading="lazy"
-         onerror="this.src='https://img.youtube.com/vi/X-uTi7gl_go/hqdefault.jpg'">
+    <img class="video-thumb" src="https://img.youtube.com/vi/X-uTi7gl_go/hqdefault.jpg" alt="Missed Voices: Youth on the Frontlines of SRHR" loading="lazy"
+         onerror="this.src='https://img.youtube.com/vi/X-uTi7gl_go/sddefault.jpg'">
     <div class="video-source-badge"><i class="fab fa-youtube"></i> &nbsp; YouTube</div>
     <button class="video-play" aria-label="Play"><i class="fas fa-play"></i></button>
   </div>
@@ -2730,6 +2803,8 @@ footer {
     <div class="video-desc">Highlighting innovative research and grassroots advocacy from young global experts addressing health equity, digital privacy, and sexual rights.</div>
   </div>
 </div>
+
+
 <!--INSTAGRAM REEL IN VERTICAL/PORTAIT FORMAT DISPLAY-->
 
     <!--<div class="video-card portrait-card reveal">-->
@@ -2768,7 +2843,7 @@ footer {
       <p>Solo travel is a quiet form of research — it sharpens curiosity, humility, and the ability to listen. Since 2020, I've documented journeys across the Himalayas, South and South-East Asia, and beyond, sharing the cultures, the people, and the unspoken lessons a map can't hold.</p>
       <p>The same questions I carry into policy rooms — about dignity, access, and who gets to be heard — follow me onto trains, trails, and tea-stalls.</p>
       <div class="travel-stats">
-        <div class="travel-stat"><span class="n">10+</span><span class="l">Countries</span></div>
+        <div class="travel-stat"><span class="n">5+</span><span class="l">Countries</span></div>
         <div class="travel-stat"><span class="n">5</span><span class="l">Himalayan treks</span></div>
         <div class="travel-stat"><span class="n">Top 5</span><span class="l">Solo female '24</span></div>
       </div>
@@ -2803,9 +2878,9 @@ footer {
         </div>
       </div>
       <div class="ig-stats">
-        <div class="ig-stat"><span>18K+</span><small>Followers</small></div>
+        <div class="ig-stat"><span>15K+</span><small>Followers</small></div>
         <div class="ig-stat"><span>340+</span><small>Posts</small></div>
-        <div class="ig-stat"><span>10+</span><small>Countries</small></div>
+        <div class="ig-stat"><span>5+</span><small>Countries</small></div>
       </div>
       <div class="ig-tiles">
         <div class="ig-tile"><div class="ig-tile-inner"><i class="fas fa-mountain"></i></div></div>
@@ -3148,7 +3223,7 @@ document.querySelectorAll('.video-wrapper').forEach(w => {
   const show = () => {
     nav.classList.remove('nav-hidden');
     clearTimeout(t);
-    t = setTimeout(hide, 3000);
+    t = setTimeout(hide, 2000);
   };
   // keep it visible near top of page
   const maybeKeep = () => {
