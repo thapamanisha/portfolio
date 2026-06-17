@@ -1,1 +1,20 @@
-["photo1.jpg", "himalaya-trek.jpg", "conference-nairobi.jpg"]
+[
+  { "src": "gallery/sunset.jpeg",           "caption": "Himalayan Sunset" },
+  { "src": "gallery/everest_painting.jpeg", "caption": "Everest Painting with Everest in the Background" },
+  { "src": "gallery/rara_flower.jpeg",      "caption": "Rara Lake with Wildflowers in the Foreground" },
+  { "src": "gallery/bridge.jpeg",           "caption": "Suspension Bridge, Nepal" },
+  { "src": "gallery/snowy_mardi.jpeg",      "caption": "Mardi Trek in the Snow" },
+  { "src": "gallery/everest_sunrise.jpeg",  "caption": "Sunrise over Everest" },
+  { "src": "gallery/mountains.jpeg",        "caption": "Himalayan Mountain Range" },
+  { "src": "gallery/rara_top.jpeg",         "caption": "Top of the Rara Viewpoint" },
+  { "src": "gallery/mustang.jpeg",          "caption": "Mustang, Nepal" },
+  { "src": "gallery/fishtail.jpeg",         "caption": "Fishtail · Machhapuchhre Mountain" },
+  { "src": "gallery/dhorpatan.jpeg",        "caption": "Dhorpatan Hunting Reserve" },
+  { "src": "gallery/api.jpeg",              "caption": "Api Himal, Far-West Nepal" },
+  { "src": "gallery/srilanka.jpeg",         "caption": "Sri Lanka" },
+  { "src": "gallery/gokyo.jpeg",            "caption": "Gokyo Lakes, Everest Region" },
+  { "src": "gallery/ice.jpeg",              "caption": "Glacier Ice, High Himalayas" },
+  { "src": "gallery/chitawan.jpeg",         "caption": "Chitwan National Park" },
+  { "src": "gallery/manang sunset.jpeg",    "caption": "Sunset over Manang Valley" },
+  { "src": "gallery/manang.jpeg",           "caption": "Manang Valley, Annapurna Circuit" }
+]
